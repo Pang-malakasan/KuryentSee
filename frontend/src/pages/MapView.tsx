@@ -1,116 +1,28 @@
-import { useState, useMemo } from "react"
-import type * as GeoJSON from "geojson"
+import { useState, useEffect } from "react"
 import { Map, MapGeoJSON, MapMarker, MarkerContent, MapPopup } from "@/components/ui/map"
 import { MapHeader } from "@/components/MapHeader"
 import { ViewToggle } from "@/components/ViewToggle"
 import { ZoomControls } from "@/components/ZoomControls"
 import { Button } from "@/components/ui/button"
 import { LightbulbOff } from "lucide-react"
-
-interface OutageLocation {
-  id: string
-  name: string
-  city: string
-  status: string
-  timeRemaining: string
-  coordinates: [number, number]
-  markerOffset: [number, number]
-  radius: number
-}
-
-const mockOutages: OutageLocation[] = [
-  {
-    id: "marangog",
-    name: "Barangay Marangog",
-    city: "Bogo City, Cebu",
-    status: "Brownout ari dawg",
-    timeRemaining: "2h 15m left",
-    coordinates: [124.0259, 11.0100], // [lng, lat]
-    markerOffset: [124.0286, 11.0075],
-    radius: 0.85,
-  },
-  {
-    id: "malingin",
-    name: "Barangay Malingin",
-    city: "Bogo City, Cebu",
-    status: "Brownout ari dawg",
-    timeRemaining: "1h 45m left",
-    coordinates: [123.982248, 11.018050], // [lng, lat]
-    markerOffset: [123.9849, 11.0155],
-    radius: 0.85,
-  },
-  {
-    id: "cayang",
-    name: "Barangay Cayang",
-    city: "Bogo City, Cebu",
-    status: "Line Maintenance",
-    timeRemaining: "45m left",
-    coordinates: [123.958715, 11.0451851], // [lng, lat]
-    markerOffset: [123.9614, 11.0427], // Offset slightly for the marker
-    radius: 0.6,
-  },
-  {
-    id: "lamintak-sur",
-    name: "Lamintak Sur",
-    city: "Medellin, Cebu",
-    status: "Transformer Repair",
-    timeRemaining: "3h 10m left",
-    coordinates: [123.9664, 11.0924],
-    markerOffset: [123.9691, 11.0899],
-    radius: 1.1,
-  },
-  {
-    id: "curva",
-    name: "Barangay Curva",
-    city: "Medellin, Cebu",
-    status: "Scheduled Outage",
-    timeRemaining: "4h 00m left",
-    coordinates: [124.0019, 11.1375], // [lng, lat]
-    markerOffset: [124.0046, 11.1350],
-    radius: 1.2,
-  },
-]
-
-// Helper to generate a smooth GeoJSON circle polygon
-function createGeoJSONCircle(center: [number, number], radiusInKm = 0.9, points = 64): GeoJSON.FeatureCollection {
-  const [lng, lat] = center
-  const coords: [number, number][] = []
-  const distanceX = radiusInKm / (111.32 * Math.cos((lat * Math.PI) / 180))
-  const distanceY = radiusInKm / 110.574
-
-  for (let i = 0; i < points; i++) {
-    const theta = (i / points) * (2 * Math.PI)
-    const x = lng + distanceX * Math.cos(theta)
-    const y = lat + distanceY * Math.sin(theta)
-    coords.push([x, y])
-  }
-  coords.push(coords[0]) // Close polygon ring
-
-  return {
-    type: "FeatureCollection",
-    features: [
-      {
-        type: "Feature",
-        properties: {},
-        geometry: {
-          type: "Polygon",
-          coordinates: [coords],
-        },
-      },
-    ],
-  }
-}
+import { mockOutages, OutageLocation } from "@/data/outages"
 
 export default function MapView() {
+  const [outages, setOutages] = useState<OutageLocation[]>(mockOutages)
   const [activePopup, setActivePopup] = useState<string | null>("marangog")
   const [zoom, setZoom] = useState(11.8) // slightly zoomed out to see all 5 locations
 
-  // Pre-compute GeoJSON data for all outages
-  const outageAreas = useMemo(() => {
-    return mockOutages.map((outage) => ({
-      ...outage,
-      geoJson: createGeoJSONCircle(outage.coordinates, outage.radius),
-    }))
+  useEffect(() => {
+    fetch("/api/outages")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          setOutages(data.data)
+        }
+      })
+      .catch(() => {
+        // Fallback gracefully to mockOutages when backend is not running
+      })
   }, [])
 
   return (
@@ -127,13 +39,20 @@ export default function MapView() {
         {/* Zoom Controls */}
         <ZoomControls />
 
-        {outageAreas.map((outage) => (
+        {outages.map((outage) => (
           <div key={`outage-group-${outage.id}`}>
-            {/* Translucent circular GeoJSON polygon layer */}
+            {/* Blackout / Dark Mode Area Overlay */}
             <MapGeoJSON
               data={outage.geoJson}
-              fillPaint={{ "fill-color": "#0f172a", "fill-opacity": 0.35 }}
-              linePaint={false}
+              fillPaint={{
+                "fill-color": "#020617", // Deep midnight darkness simulating power blackout
+                "fill-opacity": 0.75,     // Dims the map underneath into dark mode
+              }}
+              linePaint={{
+                "line-color": outage.status.toLowerCase().includes("brownout") ? "#f97316" : "#ef4444",
+                "line-width": 2,
+                "line-opacity": 0.9,
+              }}
             />
 
             {/* Clickable Point / Marker shifted away from text label */}

@@ -3,8 +3,9 @@ import type * as GeoJSON from "geojson"
 import { Map, MapGeoJSON, MapMarker, MarkerContent, MapPopup } from "@/components/ui/map"
 import { MapHeader } from "@/components/MapHeader"
 import { ViewToggle } from "@/components/ViewToggle"
+import { ZoomControls } from "@/components/ZoomControls"
 import { Button } from "@/components/ui/button"
-import { LightbulbOff, Plus, Minus } from "lucide-react"
+import { LightbulbOff } from "lucide-react"
 
 interface OutageLocation {
   id: string
@@ -124,27 +125,7 @@ export default function MapView() {
         <ViewToggle />
 
         {/* Zoom Controls */}
-        <div 
-          className="absolute right-5 top-[132px] z-20 flex flex-col bg-white/90 backdrop-blur shadow-lg rounded-xl overflow-hidden border border-slate-200/60"
-          onPointerDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
-        >
-          <button 
-            className="p-2 hover:bg-slate-100 text-slate-700 transition-colors active:bg-slate-200 cursor-pointer"
-            onClick={(e) => { e.stopPropagation(); setZoom(prev => Math.min(prev + 1, 20)) }}
-            title="Zoom In"
-          >
-            <Plus className="size-5 pointer-events-none" />
-          </button>
-          <div className="h-px bg-slate-200/80 w-full" />
-          <button 
-            className="p-2 hover:bg-slate-100 text-slate-700 transition-colors active:bg-slate-200 cursor-pointer"
-            onClick={(e) => { e.stopPropagation(); setZoom(prev => Math.max(prev - 1, 1)) }}
-            title="Zoom Out"
-          >
-            <Minus className="size-5 pointer-events-none" />
-          </button>
-        </div>
+        <ZoomControls />
 
         {outageAreas.map((outage) => (
           <div key={`outage-group-${outage.id}`}>

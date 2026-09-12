@@ -42,15 +42,17 @@ export default function BottomNav() {
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className="relative -mt-8 flex flex-col items-center group outline-none px-2"
+                  className="group relative flex w-16 flex-col items-center justify-center gap-1 outline-none"
                   aria-label={item.label}
                 >
                   <div
-                    className="relative flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-[0_4px_16px_rgba(37,99,235,0.4)] transition-transform duration-200 hover:scale-105 active:scale-95 ring-4 ring-white"
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 flex h-[56px] w-[56px] items-center justify-center rounded-full bg-blue-600 text-white shadow-[0_4px_16px_rgba(37,99,235,0.4)] transition-transform duration-200 group-hover:scale-105 active:scale-95 ring-4 ring-white z-10"
                   >
                     <Icon className="h-6 w-6" strokeWidth={2.5} />
                   </div>
-                  <span className="mt-1.5 text-[11px] font-bold tracking-wide text-blue-600">
+                  {/* Invisible spacer to maintain layout height exactly like normal buttons */}
+                  <div className="h-10 w-10 pointer-events-none" />
+                  <span className="text-[11px] font-bold tracking-wide text-blue-600">
                     {item.label}
                   </span>
                 </button>
@@ -72,9 +74,6 @@ export default function BottomNav() {
                   }`}
                 >
                   <Icon className="h-6 w-6" strokeWidth={isActive ? 2.5 : 2} />
-                  {isActive && (
-                    <span className="absolute -top-1 h-1.5 w-1.5 rounded-full bg-blue-600" />
-                  )}
                 </div>
                 <span
                   className={`text-[11px] font-semibold tracking-wide transition-colors duration-200 ${

@@ -6,6 +6,8 @@ const router = Router();
 // In-memory state for outages
 let outages: OutageLocation[] = [...mockOutages];
 
+
+
 // GET /api/outages - List all active outage areas
 router.get("/", (_req: Request, res: Response) => {
   res.json({

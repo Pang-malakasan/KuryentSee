@@ -17,6 +17,7 @@ Your goal is to return a JSON array where each object matches this schema:
     }
   ],
   "timeWindow": "The time window or duration (e.g., '6:00 AM - 4:00 PM', '10 hours', 'Unknown')",
+  "reason": "A short 1-sentence summary of WHY this outage or advisory is happening, extracted from the post. For example: 'Pole replacement and line maintenance', 'Damaged transformer due to storm', 'High electricity demand across Visayas grid', 'Repair of damaged power lines in the area'. If no specific reason is mentioned, use 'No reason specified'.",
   "datePostedISO": "Calculate the exact ISO 8601 date of the post. Use 'Post Date String' and 'Current Time (Scraped At)' to calculate relative times like 'Yesterday at 3:41 pm' or '4h ago'. If it is an absolute date without a year, assume the year from the scraped time. Return a valid ISO string.",
   "dateEffectiveISO": "The ISO 8601 formatted date of when the scheduled power interruption or alert will take effect. If the text mentions a specific date (e.g. '13 September 2026', 'September 10'), use that. If not explicitly mentioned, default to the datePostedISO."
 }
@@ -119,6 +120,7 @@ export async function processPostsWithAI(posts: any[]) {
                     timeWindow: data.timeWindow || "Unknown",
                     datePosted: parsedDate,
                     dateEffective: effectiveDate,
+                    reason: data.reason || '',
                     rawText: post.text
                 };
 
@@ -135,4 +137,71 @@ export async function processPostsWithAI(posts: any[]) {
     }
 
     console.log(`✅ AI Parsing Complete. Parsed: ${parsedCount} | Skipped (No Changes): ${skippedCount}`);
+}
+
+/**
+ * Backfill reasons for existing outages that don't have one.
+ * Uses the stored rawText to ask the AI for a short reason.
+ */
+export async function backfillReasons() {
+    if (!process.env.GEMINI_API_KEY) {
+        console.warn("⚠️ GEMINI_API_KEY is not set. Skipping reason backfill.");
+        return { updated: 0, skipped: 0 };
+    }
+
+    // Find all outages with no reason or empty reason
+    const outagesWithoutReason = await Outage.find({
+        $or: [{ reason: { $exists: false } }, { reason: '' }, { reason: null }]
+    });
+
+    console.log(`Found ${outagesWithoutReason.length} outages without a reason. Backfilling...`);
+
+    let updated = 0;
+    let skipped = 0;
+
+    for (const outage of outagesWithoutReason) {
+        try {
+            if (!outage.rawText || outage.rawText.trim() === '') {
+                skipped++;
+                continue;
+            }
+
+            // Retry up to 3 times on rate limit errors
+            let reason = 'No reason specified';
+            for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                    const response = await ai.models.generateContent({
+                        model: 'gemini-3.5-flash-lite',
+                        contents: `Extract the main reason WHY this power outage or advisory is happening from the following post. Return ONLY a short 1-sentence reason (no quotes, no JSON, just the sentence). If no specific reason is mentioned, return "No reason specified".\n\nPost:\n${outage.rawText}`,
+                        config: {
+                            temperature: 0.1,
+                        }
+                    });
+                    reason = (response.text || 'No reason specified').trim().replace(/^["']|["']$/g, '');
+                    break; // Success, exit retry loop
+                } catch (err: any) {
+                    if (err.status === 429 && attempt < 2) {
+                        console.log(`  ⏳ Rate limited, waiting 30s before retry (attempt ${attempt + 2}/3)...`);
+                        await new Promise(r => setTimeout(r, 30000));
+                    } else {
+                        throw err;
+                    }
+                }
+            }
+
+            await Outage.updateOne({ _id: outage._id }, { $set: { reason } });
+            updated++;
+            console.log(`  ✅ ${outage.sourcePostId}: ${reason}`);
+
+            // 5s delay = ~12 requests/min, safely under 15 RPM limit
+            await new Promise(r => setTimeout(r, 5000));
+
+        } catch (error) {
+            console.error(`  ❌ Error backfilling ${outage.sourcePostId}:`, error);
+            skipped++;
+        }
+    }
+
+    console.log(`✅ Reason Backfill Complete. Updated: ${updated} | Skipped: ${skipped}`);
+    return { updated, skipped };
 }

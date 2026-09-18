@@ -4,13 +4,21 @@ import { MapHeader } from "@/components/MapHeader"
 import { ViewToggle } from "@/components/ViewToggle"
 import { ZoomControls } from "@/components/ZoomControls"
 import { Button } from "@/components/ui/button"
-import { LightbulbOff } from "lucide-react"
+import { LightbulbOff, AlertTriangle, X, Activity } from "lucide-react"
 import { mockOutages, OutageLocation } from "@/data/outages"
+
+interface Advisory {
+  _id: string;
+  type: string;
+  status: string;
+}
 
 export default function MapView() {
   const [outages, setOutages] = useState<OutageLocation[]>(mockOutages)
   const [activePopup, setActivePopup] = useState<string | null>("marangog")
-  const [zoom, setZoom] = useState(11.8) // slightly zoomed out to see all 5 locations
+  const [zoom, setZoom] = useState(7.5) // slightly zoomed out to see all 5 locations
+  const [advisories, setAdvisories] = useState<Advisory[]>([])
+  const [showLegend, setShowLegend] = useState(true)
 
   useEffect(() => {
     fetch("/api/outages")
@@ -23,13 +31,25 @@ export default function MapView() {
       .catch(() => {
         // Fallback gracefully to mockOutages when backend is not running
       })
+
+    fetch("/api/advisories/grid-alerts")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.data)) {
+          setAdvisories(data.data);
+        }
+      })
+      .catch(() => {})
   }, [])
+
+  const hasRedAlert = advisories.some(a => a.type === 'RED_ALERT');
+  const hasYellowAlert = advisories.some(a => a.type === 'YELLOW_ALERT');
 
   return (
     <div className="relative inset-0 w-full h-full">
       <Map 
-        center={[123.9923, 11.0737]} // Centered around the new locations including Curva
-        zoom={11.8} // slightly zoomed out since locations are further apart now
+        center={[123.6000, 11.3000]} // Centered on the Visayan Sea (center of Visayas region)
+        zoom={7.5} // Zoomed out significantly to see all of Visayas
         onViewportChange={(v) => setZoom(v.zoom)}
         theme="light"
       >
@@ -39,13 +59,157 @@ export default function MapView() {
         {/* Zoom Controls */}
         <ZoomControls />
 
+        {/* Grid Status Legend Toggle (When closed) */}
+        {!showLegend && (
+          <div className="absolute top-24 left-6 z-10 pointer-events-auto animate-in fade-in slide-in-from-top-4 duration-500">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => setShowLegend(true)}
+              className="bg-white/95 backdrop-blur-xl border border-slate-200/80 shadow-md rounded-md h-10 px-4 flex items-center gap-2 hover:bg-white transition-all active:scale-95 group"
+            >
+              <div className="relative flex size-3 items-center justify-center">
+                {hasRedAlert ? (
+                   <>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex size-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></span>
+                   </>
+                ) : hasYellowAlert ? (
+                   <>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"></span>
+                    <span className="relative inline-flex size-3 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.5)]"></span>
+                   </>
+                ) : (
+                    <span className="relative inline-flex size-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+                )}
+              </div>
+              <span className="text-[14px] font-bold text-slate-700 tracking-wide group-hover:text-slate-900 transition-colors">Grid Status</span>
+            </Button>
+          </div>
+        )}
+
+        {/* Enhanced Grid Status Legend */}
+        {showLegend && (
+          <div className="absolute top-24 left-6 z-10 pointer-events-auto">
+            <div className="bg-white/95 backdrop-blur-md border border-slate-200 shadow-md rounded-md p-5 w-72 animate-in fade-in slide-in-from-top-4 duration-300 relative">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <div className={`p-1.5 rounded-md flex items-center justify-center border border-slate-100 ${hasRedAlert ? 'bg-red-50 text-red-500' : hasYellowAlert ? 'bg-yellow-50 text-yellow-600' : 'bg-emerald-50 text-emerald-500'}`}>
+                    <Activity className="size-4" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-slate-800 tracking-tight">Visayas Grid Status</h3>
+                </div>
+                <button 
+                  onClick={() => setShowLegend(false)}
+                  className="p-1.5 rounded-md hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-all cursor-pointer"
+                >
+                  <X className="size-4" />
+                </button>
+              </div>
+              
+              <div className="space-y-1 relative z-10">
+                <div className={`flex items-center gap-3 p-2.5 rounded-md transition-all border ${hasRedAlert ? 'bg-red-50/50 border-red-100' : 'border-transparent hover:bg-slate-50'}`}>
+                  <div className="relative flex size-3 items-center justify-center">
+                    {hasRedAlert ? (
+                       <>
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex size-3 rounded-full bg-red-500"></span>
+                       </>
+                    ) : (
+                        <span className="relative inline-flex size-3 rounded-full bg-slate-200"></span>
+                    )}
+                  </div>
+                  <span className={`text-sm font-medium ${hasRedAlert ? 'text-red-700' : 'text-slate-600'}`}>
+                    Red Alert
+                  </span>
+                </div>
+                
+                <div className={`flex items-center gap-3 p-2.5 rounded-md transition-all border ${hasYellowAlert ? 'bg-yellow-50/50 border-yellow-100' : 'border-transparent hover:bg-slate-50'}`}>
+                  <div className="relative flex size-3 items-center justify-center">
+                    {hasYellowAlert ? (
+                       <>
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"></span>
+                        <span className="relative inline-flex size-3 rounded-full bg-yellow-500"></span>
+                       </>
+                    ) : (
+                        <span className="relative inline-flex size-3 rounded-full bg-slate-200"></span>
+                    )}
+                  </div>
+                  <span className={`text-sm font-medium ${hasYellowAlert ? 'text-yellow-700' : 'text-slate-600'}`}>
+                    Yellow Alert
+                  </span>
+                </div>
+                
+                <div className={`flex items-center gap-3 p-2.5 rounded-md transition-all border ${!hasRedAlert && !hasYellowAlert ? 'bg-emerald-50/50 border-emerald-100' : 'border-transparent hover:bg-slate-50'}`}>
+                  <div className="relative flex size-3 items-center justify-center">
+                    {!hasRedAlert && !hasYellowAlert ? (
+                        <span className="relative inline-flex size-3 rounded-full bg-emerald-500"></span>
+                    ) : (
+                        <span className="relative inline-flex size-3 rounded-full bg-slate-200"></span>
+                    )}
+                  </div>
+                  <span className={`text-sm font-medium ${!hasRedAlert && !hasYellowAlert ? 'text-emerald-700' : 'text-slate-600'}`}>
+                    Normal Condition
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Grid Alert Pulse Marker at Visayan Sea */}
+        {(hasRedAlert || hasYellowAlert) && (
+          <MapMarker longitude={123.6000} latitude={11.3000} pitchAlignment="map" rotationAlignment="map">
+            <MarkerContent>
+              <div className="relative flex items-center justify-center group cursor-pointer" onClick={() => setActivePopup('grid-alert')}>
+                {/* Massive, slow pulse covering the Visayas */}
+                <span 
+                  className={`absolute inline-flex rounded-full opacity-30 ${hasRedAlert ? 'bg-red-500' : 'bg-yellow-500'}`} 
+                  style={{ width: '450px', height: '450px', animation: 'ping 4s cubic-bezier(0, 0, 0.2, 1) infinite' }}
+                />
+                <span className={`relative inline-flex size-10 items-center justify-center rounded-full border-2 border-white shadow-2xl ${hasRedAlert ? 'bg-red-600' : 'bg-yellow-500'}`}>
+                  <AlertTriangle className="size-5 text-white" />
+                </span>
+              </div>
+            </MarkerContent>
+          </MapMarker>
+        )}
+
+        {/* Grid Alert Popup */}
+        {activePopup === 'grid-alert' && (
+          <MapPopup
+            longitude={123.6000}
+            latitude={11.3000}
+            offset={24}
+            onClose={() => setActivePopup(null)}
+            closeButton
+            focusAfterOpen={false}
+            closeOnClick={false}
+          >
+            <div className="space-y-2">
+              <h3 className="text-foreground font-semibold">Grid Alert Active</h3>
+              <p className="text-muted-foreground text-sm">
+                The Visayas Grid is currently under a {hasRedAlert ? 'Red' : 'Yellow'} Alert. Manual load dropping or temporary power interruptions may occur in your area.
+              </p>
+              <Button
+                size="sm"
+                variant="outline"
+                className="w-full"
+                onClick={() => setActivePopup(null)}
+              >
+                Close
+              </Button>
+            </div>
+          </MapPopup>
+        )}
+
         {outages.map((outage) => (
           <div key={`outage-group-${outage.id}`}>
             {/* Blackout / Dark Mode Area Overlay */}
             <MapGeoJSON
               data={outage.geoJson}
               fillPaint={{
-                "fill-color": "#020617", // Deep midnight darkness simulating power blackout
+                "fill-color": "#020617ac", // Deep midnight darkness simulating power blackout
                 "fill-opacity": 0.75,     // Dims the map underneath into dark mode
               }}
               linePaint={{
@@ -90,39 +254,19 @@ export default function MapView() {
                 closeButton
                 focusAfterOpen={false}
                 closeOnClick={false}
-                className="p-0 border-0 bg-transparent shadow-none"
               >
-                <div className="w-64 p-4 bg-white/95 text-slate-900 border border-slate-200/90 backdrop-blur-xl shadow-2xl rounded-2xl space-y-3">
-                  {/* Header Info */}
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="font-extrabold text-sm text-slate-900 tracking-tight">{outage.name}</h3>
-                      <p className="text-xs font-medium text-slate-500 flex items-center gap-1 mt-0.5">
-                        <span>{outage.city}</span>
-                      </p>
-                    </div>
-                    <div className="size-7 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-white shrink-0 shadow-sm">
-                      <LightbulbOff className="size-4 text-white fill-white" />
-                    </div>
-                  </div>
-
-                  {/* Status Badge */}
-                  <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-rose-50 border border-rose-100/80">
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-75" />
-                      <span className="relative inline-flex size-2 rounded-full bg-rose-500" />
-                    </span>
-                    <span className="text-[11px] font-bold text-rose-700">{outage.status}</span>
-                  </div>
-
-                  {/* Action Button */}
+                <div className="space-y-2">
+                  <h3 className="text-foreground font-semibold">{outage.name}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    {outage.city} - {outage.status}
+                  </p>
                   <Button
                     size="sm"
                     variant="outline"
-                    className="w-full text-xs font-bold h-8 rounded-xl border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95"
+                    className="w-full"
                     onClick={() => setActivePopup(null)}
                   >
-                    Close Info
+                    Close
                   </Button>
                 </div>
               </MapPopup>

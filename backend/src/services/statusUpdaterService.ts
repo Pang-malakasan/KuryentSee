@@ -22,12 +22,23 @@ export async function updateOutageStatuses() {
       const timeWindow = outage.timeWindow;
 
       if (!timeWindow || timeWindow === 'Unknown' || timeWindow === 'None') {
-        // Fallback for unknown time windows
-        // If it's been a full day since the effective date, mark completed
-        const oneDayLater = new Date(effectiveDate);
-        oneDayLater.setDate(oneDayLater.getDate() + 1);
-        if (now > oneDayLater) {
+        // Fallback for unknown time windows:
+        // Use the end of the effective day as the boundary.
+        const endOfDay = new Date(effectiveDate);
+        endOfDay.setHours(23, 59, 59, 999);
+        
+        let changed = false;
+        if (now > endOfDay) {
           outage.status = 'COMPLETED';
+          changed = true;
+        } else if (now >= effectiveDate && outage.status === 'UPCOMING') {
+          // If time is unknown but effectiveDate has passed, it's ongoing
+          outage.status = 'ON_GOING';
+          changed = true;
+        }
+
+        if (changed) {
+          console.log(`[Status Updater] Updating outage ${outage._id} from UPCOMING to ${outage.status} (Unknown time window fallback)`);
           await outage.save();
         }
         continue;

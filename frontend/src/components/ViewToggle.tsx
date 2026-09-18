@@ -5,6 +5,21 @@ import { Box, Compass } from "lucide-react"
 export function ViewToggle() {
   const { map, isLoaded } = useMap()
   const [pitch, setPitch] = useState(0)
+  const [headerHeight, setHeaderHeight] = useState(0)
+
+  useEffect(() => {
+    const measure = () => {
+      const header = document.querySelector("header")
+      if (header) setHeaderHeight(header.getBoundingClientRect().height)
+    }
+    measure()
+    window.addEventListener("resize", measure)
+    const interval = setInterval(measure, 500)
+    return () => {
+      window.removeEventListener("resize", measure)
+      clearInterval(interval)
+    }
+  }, [])
 
   useEffect(() => {
     if (!map || !isLoaded) return
@@ -32,7 +47,7 @@ export function ViewToggle() {
   }
 
   return (
-    <div className="absolute top-20 right-5 z-20">
+    <div className="absolute right-4 z-20" style={{ top: `${headerHeight + 16}px` }}>
       <button
         onClick={handleToggle}
         title={is3D ? "Reset to flat 2D view" : "Switch to interactive 3D view"}

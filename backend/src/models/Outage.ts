@@ -11,6 +11,7 @@ export interface IOutage extends Document {
   timeWindow: string; 
   datePosted: Date; 
   dateEffective: Date;
+  reason: string;
   rawText: string; 
 }
 
@@ -33,6 +34,7 @@ const OutageSchema: Schema = new Schema({
   timeWindow: { type: String, required: true },
   datePosted: { type: Date, required: true },
   dateEffective: { type: Date, required: true },
+  reason: { type: String, default: '' },
   rawText: { type: String, required: true }
 }, {
   timestamps: true 

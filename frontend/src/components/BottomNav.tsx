@@ -23,7 +23,7 @@ const NAV_ITEMS: NavItem[] = [
   { path: '/about', label: 'About', icon: Info },
 ]
 
-export default function BottomNav() {
+export default function BottomNav({ onActivityClick, isActivityActive }: { onActivityClick?: () => void, isActivityActive?: boolean }) {
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -34,14 +34,23 @@ export default function BottomNav() {
       >
         <div className="flex items-center justify-between">
           {NAV_ITEMS.map((item) => {
-            const isActive = location.pathname === item.path
+            const isActivityTab = item.label === 'Activity'
+            const isActive = isActivityTab && isActivityActive !== undefined ? isActivityActive : location.pathname === item.path
             const Icon = item.icon
+
+            const handleClick = () => {
+              if (isActivityTab && onActivityClick) {
+                onActivityClick()
+              } else {
+                navigate(item.path)
+              }
+            }
 
             if (item.isFab) {
               return (
                 <button
                   key={item.path}
-                  onClick={() => navigate(item.path)}
+                  onClick={handleClick}
                   className="group relative flex w-16 flex-col items-center justify-center gap-1 outline-none"
                   aria-label={item.label}
                 >
@@ -62,7 +71,7 @@ export default function BottomNav() {
             return (
               <button
                 key={item.path}
-                onClick={() => navigate(item.path)}
+                onClick={handleClick}
                 className="group relative flex w-16 flex-col items-center justify-center gap-1 outline-none"
                 aria-label={item.label}
               >

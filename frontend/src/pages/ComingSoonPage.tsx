@@ -14,7 +14,7 @@ export default function ComingSoonPage({ icon: Icon, title, description }: Comin
         <div className="relative mb-6 w-20 h-20 flex-shrink-0">
           <div
             className="absolute inset-0 opacity-30"
-            style={{ background: 'var(--color-accent)' }}
+            style={{ background: 'var(--color-brand)' }}
           />
           <div className="relative w-full h-full flex items-center justify-center">
             <Icon className="w-9 h-9 text-blue-600" strokeWidth={1.5} />
@@ -30,12 +30,12 @@ export default function ComingSoonPage({ icon: Icon, title, description }: Comin
         </p>
 
         {/* "Coming Soon" badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 border border-brand/20">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand" />
           </span>
-          <span className="text-xs font-semibold text-accent-light uppercase tracking-widest">
+          <span className="text-xs font-semibold text-brand-light uppercase tracking-widest">
             Coming Soon
           </span>
         </div>

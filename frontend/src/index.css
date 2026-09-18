@@ -5,7 +5,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Design Tokens (Light / Blue) ─── */
+/* ─── App Design Tokens (Light / Blue) ───
+   These live in a plain `@theme` block so Tailwind emits real custom
+   properties. The names must never collide with the neutral tokens declared by
+   `shadcn/tailwind.css` and the `@theme inline` block further down the file
+   (accent, border, ring, primary, muted, ...). Two `@theme` blocks that declare
+   the same property do not merge — the one serialized last wins, which is how
+   the blue `--color-accent: #2563eb` silently became the near-white shadcn
+   `oklch(0.97 0 0)` and made `bg-accent` / `border-accent` invisible. */
 @theme {
   --color-bg-primary: #f8fafc;
   --color-bg-secondary: #ffffff;
@@ -13,10 +20,10 @@
   --color-bg-elevated: #f1f5f9;
   --color-bg-glass: rgba(255, 255, 255, 0.82);
 
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-accent-soft: #dbeafe;
-  --color-accent-glow: rgba(37, 99, 235, 0.15);
+  --color-brand: #2563eb;
+  --color-brand-light: #3b82f6;
+  --color-brand-soft: #dbeafe;
+  --color-brand-glow: rgba(37, 99, 235, 0.15);
 
   --color-status-red: #ef4444;
   --color-status-amber: #f59e0b;
@@ -26,41 +33,28 @@
   --color-text-secondary: #475569;
   --color-text-muted: #94a3b8;
 
-  --color-border: rgba(15, 23, 42, 0.08);
-  --color-border-strong: rgba(15, 23, 42, 0.12);
+  --color-hairline: rgba(15, 23, 42, 0.08);
+  --color-hairline-strong: rgba(15, 23, 42, 0.12);
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Geist Variable', system-ui, -apple-system, sans-serif;
 }
 
-/* ─── Global Base ─── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body, #root {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-body {
-  font-family: var(--font-sans);
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
+/* ─── Global base / reset ───
+   The rules that used to sit here were moved into the `@layer base` block at
+   the bottom of this file. They MUST stay layered: Tailwind v4 emits every
+   utility inside `@layer utilities`, and un-layered CSS (the implicit last
+   layer) always outranks every named layer regardless of specificity. An
+   un-layered `* { margin: 0; padding: 0 }` therefore silently disabled every
+   `p-*`, `px-*`, `py-*`, `pt-*`, `m-*`, `mx-*`, `mb-*`, `space-y-*` and
+   `space-x-*` utility in the app, which is why the whole UI rendered with zero
+   padding/spacing and looked like Tailwind was never installed. */
+/* (moved to @layer base at the end of this file) */
 
 /* ─── MapLibre Overrides ─── */
+/* ─── MapLibre Overrides ───
+   MapLibre GL injects its own stylesheet at runtime (un-layered), so these
+   rules intentionally stay un-layered + `!important`: rules placed inside
+   `@layer base` would be outranked by MapLibre's un-layered rules. */
 .maplibregl-map {
   font-family: var(--font-sans) !important;
 }
@@ -111,31 +105,20 @@ body {
   }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.4s ease-out both;
+/* App-level animation helpers. They live in `@layer components` (instead of
+   un-layered) so a Tailwind `animate-*` utility can still override them. The
+   @keyframes themselves have to stay top-level. */
+@layer components {
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s ease-out both;
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
 }
 
-.animate-pulse-ring {
-  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-/* ─── Scrollbar ─── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
+/* ─── Scrollbar (moved into @layer base at the end of this file) ─── */
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -276,5 +259,60 @@ body {
   }
   .maplibregl-ctrl-attrib-button {
     @apply bg-transparent! dark:invert;
+  }
+}
+
+/* ─── App base layer ───
+   The app's own reset/base rules belong here, NOT at the top of the file
+   outside of any layer. Layer order declared by Tailwind is
+   `theme, base, components, utilities`, so utilities keep winning over these
+   defaults while `normalize`-style resets still apply. Keeping them in
+   `@layer base` is what makes `p-*` / `m-*` / `space-y-*` work again. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── Scrollbar ─── */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
   }
 }

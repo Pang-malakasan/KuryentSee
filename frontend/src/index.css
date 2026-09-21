@@ -48,9 +48,7 @@
    `p-*`, `px-*`, `py-*`, `pt-*`, `m-*`, `mx-*`, `mb-*`, `space-y-*` and
    `space-x-*` utility in the app, which is why the whole UI rendered with zero
    padding/spacing and looked like Tailwind was never installed. */
-/* (moved to @layer base at the end of this file) */
 
-/* ─── MapLibre Overrides ─── */
 /* ─── MapLibre Overrides ───
    MapLibre GL injects its own stylesheet at runtime (un-layered), so these
    rules intentionally stay un-layered + `!important`: rules placed inside
@@ -117,8 +115,6 @@
     animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
-
-/* ─── Scrollbar (moved into @layer base at the end of this file) ─── */
 
 @theme inline {
   --font-heading: var(--font-sans);

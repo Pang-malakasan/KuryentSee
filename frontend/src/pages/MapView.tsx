@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Map, MapGeoJSON, MapMarker, MarkerContent, MapPopup } from "@/components/ui/map"
 import { MapHeader } from "@/components/MapHeader"
 import { ViewToggle } from "@/components/ViewToggle"
 import { ZoomControls } from "@/components/ZoomControls"
 import { Button } from "@/components/ui/button"
-import { LightbulbOff, AlertTriangle, X, Activity } from "lucide-react"
+import { LightbulbOff, AlertTriangle, X, Activity, UtilityPole, Building2 } from "lucide-react"
 import { mockOutages, OutageLocation } from "@/data/outages"
 
 interface Advisory {
@@ -44,6 +44,52 @@ export default function MapView() {
 
   const hasRedAlert = advisories.some(a => a.type === 'RED_ALERT');
   const hasYellowAlert = advisories.some(a => a.type === 'YELLOW_ALERT');
+
+  const ZOOM_THRESHOLD = 11;
+
+  const cityGroups = useMemo(() => {
+    const groups = outages.reduce((acc, outage) => {
+      if (!acc[outage.city]) {
+        acc[outage.city] = {
+          city: outage.city,
+          markerOffset: [...outage.markerOffset],
+          count: 1,
+          barangays: [outage.name]
+        };
+      } else {
+        acc[outage.city].markerOffset[0] += outage.markerOffset[0];
+        acc[outage.city].markerOffset[1] += outage.markerOffset[1];
+        acc[outage.city].count += 1;
+        if (!acc[outage.city].barangays.includes(outage.name)) {
+          acc[outage.city].barangays.push(outage.name);
+        }
+      }
+      return acc;
+    }, {} as Record<string, { city: string, markerOffset: [number, number], count: number, barangays: string[] }>);
+
+    Object.values(groups).forEach(group => {
+      group.markerOffset[0] /= group.count;
+      group.markerOffset[1] /= group.count;
+    });
+
+    return Object.values(groups);
+  }, [outages]);
+
+  const combinedGeoJson = useMemo(() => {
+    return {
+      type: "FeatureCollection",
+      features: outages.flatMap((outage) => {
+        return outage.geoJson.features.map(f => ({
+          ...f,
+          properties: {
+            ...f.properties,
+            fillColor: outage.status.toLowerCase().includes("brownout") ? "#334155" : "#ef4444",
+            fillOpacity: outage.status.toLowerCase().includes("brownout") ? 0.4 : 0.2,
+          }
+        }))
+      })
+    };
+  }, [outages]);
 
   return (
     <div className="relative inset-0 w-full h-full">
@@ -203,23 +249,77 @@ export default function MapView() {
           </MapPopup>
         )}
 
-        {outages.map((outage) => (
-          <div key={`outage-group-${outage.id}`}>
-            {/* Blackout / Dark Mode Area Overlay */}
-            <MapGeoJSON
-              data={outage.geoJson}
-              fillPaint={{
-                "fill-color": "#020617ac", // Deep midnight darkness simulating power blackout
-                "fill-opacity": 0.75,     // Dims the map underneath into dark mode
-              }}
-              linePaint={{
-                "line-color": outage.status.toLowerCase().includes("brownout") ? "#f97316" : "#ef4444",
-                "line-width": 2,
-                "line-opacity": 0.9,
-              }}
-            />
+        {/* City-level clustered markers when zoomed out */}
+        {zoom < ZOOM_THRESHOLD && cityGroups.map((group) => (
+          <div key={`city-cluster-group-${group.city}`}>
+            <MapMarker
+              longitude={group.markerOffset[0]}
+              latitude={group.markerOffset[1]}
+              onClick={() => setActivePopup((prev) => (prev === `city-${group.city}` ? null : `city-${group.city}`))}
+            >
+              <MarkerContent>
+                <div className="flex flex-col items-center gap-1 hover:scale-105 transition-all active:scale-95 cursor-pointer">
+                  <div className="flex items-center justify-center size-10 bg-white border-2 border-slate-700 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
+                    <Building2 className="size-5 text-slate-700" />
+                  </div>
+                </div>
+              </MarkerContent>
+            </MapMarker>
 
-            {/* Clickable Point / Marker shifted away from text label */}
+            {/* City Popup */}
+            {activePopup === `city-${group.city}` && (
+              <MapPopup
+                longitude={group.markerOffset[0]}
+                latitude={group.markerOffset[1]}
+                offset={20}
+                onClose={() => setActivePopup(null)}
+                closeButton
+                focusAfterOpen={false}
+                closeOnClick={false}
+              >
+                <div className="space-y-3 min-w-[200px]">
+                  <h3 className="text-foreground font-bold text-base">{group.city}</h3>
+                  <div className="space-y-1">
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Covered Barangays ({group.count})</p>
+                    <ul className="text-sm text-slate-700 space-y-1 max-h-32 overflow-y-auto pr-2">
+                      {group.barangays.map(b => (
+                        <li key={b} className="flex items-center gap-1.5">
+                          <span className="size-1.5 rounded-full bg-slate-400 shrink-0"></span>
+                          <span className="truncate">{b.replace('Barangay ', '')}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="w-full text-xs h-8 mt-2"
+                    onClick={() => setActivePopup(null)}
+                  >
+                    Close
+                  </Button>
+                </div>
+              </MapPopup>
+            )}
+          </div>
+        ))}
+
+        {/* Render all polygons in a single layer for massive performance boost */}
+        <MapGeoJSON
+          data={combinedGeoJson as any}
+          fillPaint={{
+            "fill-color": ["get", "fillColor"],
+            "fill-opacity": ["get", "fillOpacity"]
+          }}
+          linePaint={{
+            "line-width": 0,
+            "line-opacity": 0,
+          }}
+        />
+
+        {zoom >= ZOOM_THRESHOLD && outages.map((outage) => (
+          <div key={`outage-group-${outage.id}`}>
+            {/* Individual Barangay Outage Markers (visible when zoomed in) */}
             <MapMarker
               longitude={outage.markerOffset[0]}
               latitude={outage.markerOffset[1]}
@@ -227,19 +327,15 @@ export default function MapView() {
             >
               <MarkerContent>
                 <div className="flex flex-col items-center gap-1 hover:scale-105 transition-all active:scale-95 cursor-pointer">
-                  <div className="flex items-center justify-center size-9 bg-slate-900 rounded-full  shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
-                    <LightbulbOff className="size-4 text-white fill-white animate-pulse" />
-                  </div>
-                  <div 
-                    className="mt-1 px-3 py-1 text-[11px] font-bold text-white whitespace-nowrap bg-slate-900/85 backdrop-blur-md rounded-full border border-slate-700/80 shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all duration-300 origin-top"
-                    style={{
-                      transform: `scale(${Math.max(0, Math.min(1, (zoom - 10.5) / 2))})`,
-                      opacity: Math.max(0, Math.min(1, (zoom - 10.5) / 1.5)),
-                      pointerEvents: zoom > 10.5 ? "auto" : "none"
-                    }}
-                  >
-                    {outage.timeRemaining}
-                  </div>
+                  {outage.status.toLowerCase().includes("brownout") ? (
+                    <div className="flex items-center justify-center size-9 bg-slate-900 border-[2.5px] border-slate-900 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+                      <LightbulbOff className="size-4 text-slate-400 animate-pulse" />
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center size-9 bg-white border-[2.5px] border-slate-700 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
+                      <UtilityPole className="size-4 text-slate-700" />
+                    </div>
+                  )}
                 </div>
               </MarkerContent>
             </MapMarker>

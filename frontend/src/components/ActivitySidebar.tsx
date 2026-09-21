@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import { X, MapPin } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 interface Advisory {
   _id: string;
@@ -120,26 +120,6 @@ export function ActivitySidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
     { key: "reports", label: "Reports", count: 0 },
   ];
 
-  const getAccentColor = (type: string) => {
-    if (type.includes("RED")) return "border-l-red-500";
-    if (type.includes("YELLOW")) return "border-l-amber-400";
-    if (type.includes("POWER_RESUMED")) return "border-l-emerald-500";
-    if (type.includes("GRID")) return "border-l-violet-500";
-    if (type.includes("EMERGENCY")) return "border-l-red-500";
-    if (type.includes("SCHEDULED")) return "border-l-blue-500";
-    return "border-l-slate-400";
-  };
-
-  const getTypeColor = (type: string) => {
-    if (type.includes("RED")) return "text-red-600";
-    if (type.includes("YELLOW")) return "text-amber-600";
-    if (type.includes("POWER_RESUMED")) return "text-emerald-600";
-    if (type.includes("GRID")) return "text-violet-600";
-    if (type.includes("EMERGENCY")) return "text-red-600";
-    if (type.includes("SCHEDULED")) return "text-blue-600";
-    return "text-slate-700";
-  };
-
   const getStatusStyle = (status: string) => {
     if (status === "COMPLETED" || status === "RESOLVED") return "bg-emerald-50 text-emerald-700 ring-emerald-600/20";
     if (status === "UPCOMING") return "bg-blue-50 text-blue-700 ring-blue-600/20";
@@ -148,7 +128,7 @@ export function ActivitySidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
 
 
   // Sidebar panel animation
-  const panelVariants = {
+  const panelVariants: Variants = {
     hidden: { x: -440, opacity: 0 },
     visible: { 
       x: 0, 
@@ -175,7 +155,7 @@ export function ActivitySidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
   };
 
   // Card stagger animation
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 16, scale: 0.97 },
     visible: { 
       opacity: 1, 
@@ -186,7 +166,7 @@ export function ActivitySidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
     exit: { opacity: 0, y: -8, transition: { duration: 0.15 } }
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
   };

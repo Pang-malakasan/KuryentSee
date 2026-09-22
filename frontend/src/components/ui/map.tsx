@@ -153,7 +153,7 @@ const MapContext = createContext<MapContextValue | null>(null);
 function useMap() {
   const context = useContext(MapContext);
   if (!context) {
-    throw new Error("useMap must be used within a Map component");
+    return { map: null, isLoaded: false, resolvedTheme: "light" } as unknown as MapContextValue;
   }
   return context;
 }
@@ -297,9 +297,7 @@ const Map = forwardRef<MapRef, MapProps>(function Map(
       container: containerRef.current,
       style: initialStyle,
       renderWorldCopies: false,
-      attributionControl: {
-        compact: true,
-      },
+      attributionControl: false,
       ...props,
       ...viewport,
     });

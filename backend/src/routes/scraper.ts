@@ -14,8 +14,6 @@ router.get("/facebook", async (req: Request, res: Response) => {
   }
 
   try {
-    // Extract the username/page name from the URL
-    // e.g., https://www.facebook.com/cebeco2.official -> cebeco2.official
     let pageName = url;
     if (url.includes("facebook.com/")) {
       pageName = url.split("facebook.com/")[1].replace(/\/$/, "");
@@ -24,7 +22,6 @@ router.get("/facebook", async (req: Request, res: Response) => {
     console.log(`Starting scraper for Page: ${pageName}`);
     const posts = await scrapeFacebookPage(pageName);
     
-
     // Also run the AI parser immediately so we can test it!
     const { processPostsWithAI } = await import('../services/aiParserService.js');
     await processPostsWithAI(posts);

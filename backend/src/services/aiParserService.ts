@@ -56,7 +56,7 @@ export async function processPostsWithAI(posts: any[]) {
 
             // If it exists but text is different, or if it's brand new, send to AI
             const response = await ai.models.generateContent({
-                model: 'gemini-3.5-flash-lite',
+                model: 'gemini-3.5-flash',
                 contents: `Current Time (Scraped At): ${post.scrapedAt || new Date().toISOString()}\nPost Date String: ${post.timePosted}\n\nPost Text:\n${post.text}`,
                 config: {
                     systemInstruction: SYSTEM_PROMPT,
@@ -171,7 +171,7 @@ export async function backfillReasons() {
             for (let attempt = 0; attempt < 3; attempt++) {
                 try {
                     const response = await ai.models.generateContent({
-                        model: 'gemini-3.5-flash-lite',
+                        model: 'gemini-3.5-flash',
                         contents: `Extract the main reason WHY this power outage or advisory is happening from the following post. Return ONLY a short 1-sentence reason (no quotes, no JSON, just the sentence). If no specific reason is mentioned, return "No reason specified".\n\nPost:\n${outage.rawText}`,
                         config: {
                             temperature: 0.1,

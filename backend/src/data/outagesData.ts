@@ -9,6 +9,11 @@ export interface OutageLocation {
   coordinates: [number, number]
   markerOffset: [number, number]
   geoJson: GeoJSON.FeatureCollection
+  reason?: string
+  sourcePostId?: string
+  isUpcoming?: boolean
+  duration?: string
+  dateEffective?: string
 }
 
 /**
@@ -71,8 +76,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "anonang-sur",
     "name": "Barangay Anonang Sur",
     "city": "Bogo City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.961612, 10.985299],
     "markerOffset": [123.961612, 10.985299],
     "geoJson": {
@@ -83,7 +88,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Anonang Sur",
             "city": "Bogo City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072211003"
           },
           "geometry": {
@@ -115,8 +120,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "banban",
     "name": "Barangay Banban",
     "city": "Bogo City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.961807, 11.018088],
     "markerOffset": [123.961807, 11.018088],
     "geoJson": {
@@ -127,7 +132,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Banban",
             "city": "Bogo City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072211004"
           },
           "geometry": {
@@ -153,8 +158,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "binabag",
     "name": "Barangay Binabag",
     "city": "Bogo City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.972139, 10.972465],
     "markerOffset": [123.972139, 10.972465],
     "geoJson": {
@@ -165,7 +170,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Binabag",
             "city": "Bogo City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072211005"
           },
           "geometry": {
@@ -202,8 +207,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bungtod",
     "name": "Barangay Bungtod (Pob.)",
     "city": "Bogo City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.006595, 11.042736],
     "markerOffset": [124.006595, 11.042736],
     "geoJson": {
@@ -214,7 +219,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bungtod (Pob.)",
             "city": "Bogo City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072211006"
           },
           "geometry": {
@@ -243,7 +248,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Carbon (Pob.)",
     "city": "Bogo City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.006328, 11.051206],
     "markerOffset": [124.006328, 11.051206],
     "geoJson": {
@@ -279,8 +284,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cayang",
     "name": "Barangay Cayang",
     "city": "Bogo City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.968275, 11.043107],
     "markerOffset": [123.968275, 11.043107],
     "geoJson": {
@@ -291,7 +296,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cayang",
             "city": "Bogo City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072211008"
           },
           "geometry": {
@@ -328,7 +333,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Cogon (Pob.)",
     "city": "Bogo City, Cebu",
     "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "1h 30m left",
     "coordinates": [123.998684, 11.040624],
     "markerOffset": [123.998684, 11.040624],
     "geoJson": {
@@ -369,8 +374,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dakit",
     "name": "Barangay Dakit",
     "city": "Bogo City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.001532, 11.023966],
     "markerOffset": [124.001532, 11.023966],
     "geoJson": {
@@ -381,7 +386,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dakit",
             "city": "Bogo City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072211009"
           },
           "geometry": {
@@ -409,8 +414,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "don-pedro-rodriguez",
     "name": "Barangay Don Pedro Rodriguez",
     "city": "Bogo City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.969133, 11.066706],
     "markerOffset": [123.969133, 11.066706],
     "geoJson": {
@@ -421,7 +426,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Don Pedro Rodriguez",
             "city": "Bogo City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072211010"
           },
           "geometry": {
@@ -457,8 +462,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "gairan",
     "name": "Barangay Gairan",
     "city": "Bogo City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.020274, 11.050336],
     "markerOffset": [124.020274, 11.050336],
     "geoJson": {
@@ -469,7 +474,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Gairan",
             "city": "Bogo City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072211011"
           },
           "geometry": {
@@ -503,7 +508,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Guadalupe",
     "city": "Bogo City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.007358, 10.996232],
     "markerOffset": [124.007358, 10.996232],
     "geoJson": {
@@ -548,7 +553,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay La Paz",
     "city": "Bogo City, Cebu",
     "status": "Brownout",
-    "timeRemaining": "30m left",
+    "timeRemaining": "2h 45m left",
     "coordinates": [123.988884, 10.998629],
     "markerOffset": [123.988884, 10.998629],
     "geoJson": {
@@ -594,8 +599,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "la-purisima-concepcion",
     "name": "Barangay La Purisima Concepcion (Pob.)",
     "city": "Bogo City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.002237, 11.050224],
     "markerOffset": [124.002237, 11.050224],
     "geoJson": {
@@ -606,7 +611,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay La Purisima Concepcion (Pob.)",
             "city": "Bogo City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072211014"
           },
           "geometry": {
@@ -631,8 +636,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "libertad",
     "name": "Barangay Libertad",
     "city": "Bogo City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.018121, 11.029341],
     "markerOffset": [124.018121, 11.029341],
     "geoJson": {
@@ -643,7 +648,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Libertad",
             "city": "Bogo City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072211015"
           },
           "geometry": {
@@ -674,8 +679,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lourdes",
     "name": "Barangay Lourdes (Pob.)",
     "city": "Bogo City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.00648, 11.049785],
     "markerOffset": [124.00648, 11.049785],
     "geoJson": {
@@ -686,7 +691,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lourdes (Pob.)",
             "city": "Bogo City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072211016"
           },
           "geometry": {
@@ -710,8 +715,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "malingin",
     "name": "Barangay Malingin",
     "city": "Bogo City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.984027, 11.022106],
     "markerOffset": [123.984027, 11.022106],
     "geoJson": {
@@ -722,7 +727,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Malingin",
             "city": "Bogo City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072211017"
           },
           "geometry": {
@@ -757,7 +762,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Marangog",
     "city": "Bogo City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.030171, 11.012801],
     "markerOffset": [124.030171, 11.012801],
     "geoJson": {
@@ -801,8 +806,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "nailon",
     "name": "Barangay Nailon",
     "city": "Bogo City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.034045, 11.050097],
     "markerOffset": [124.034045, 11.050097],
     "geoJson": {
@@ -813,7 +818,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Nailon",
             "city": "Bogo City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072211019"
           },
           "geometry": {
@@ -844,8 +849,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "odlot",
     "name": "Barangay Odlot",
     "city": "Bogo City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.030889, 10.994836],
     "markerOffset": [124.030889, 10.994836],
     "geoJson": {
@@ -856,7 +861,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Odlot",
             "city": "Bogo City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072211020"
           },
           "geometry": {
@@ -889,8 +894,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "pandan",
     "name": "Barangay Pandan (Pandan Heights)",
     "city": "Bogo City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.010869, 11.045663],
     "markerOffset": [124.010869, 11.045663],
     "geoJson": {
@@ -901,7 +906,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Pandan (Pandan Heights)",
             "city": "Bogo City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072211021"
           },
           "geometry": {
@@ -927,8 +932,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "polambato",
     "name": "Barangay Polambato",
     "city": "Bogo City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.987636, 11.063993],
     "markerOffset": [123.987636, 11.063993],
     "geoJson": {
@@ -939,7 +944,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Polambato",
             "city": "Bogo City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072211022"
           },
           "geometry": {
@@ -981,8 +986,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sambag",
     "name": "Barangay Sambag (Pob.)",
     "city": "Bogo City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.009064, 11.053686],
     "markerOffset": [124.009064, 11.053686],
     "geoJson": {
@@ -993,7 +998,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sambag (Pob.)",
             "city": "Bogo City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072211023"
           },
           "geometry": {
@@ -1020,7 +1025,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay San Vicente (Pob.)",
     "city": "Bogo City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.004327, 11.051592],
     "markerOffset": [124.004327, 11.051592],
     "geoJson": {
@@ -1056,8 +1061,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "santo-nino",
     "name": "Barangay Santo Niño",
     "city": "Bogo City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.009752, 11.051638],
     "markerOffset": [124.009752, 11.051638],
     "geoJson": {
@@ -1068,7 +1073,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Santo Niño",
             "city": "Bogo City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072211025"
           },
           "geometry": {
@@ -1091,8 +1096,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "santo-rosario",
     "name": "Barangay Santo Rosario (Pob.)",
     "city": "Bogo City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.005637, 11.052731],
     "markerOffset": [124.005637, 11.052731],
     "geoJson": {
@@ -1103,7 +1108,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Santo Rosario (Pob.)",
             "city": "Bogo City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072211026"
           },
           "geometry": {
@@ -1126,8 +1131,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "siocon",
     "name": "Barangay Siocon",
     "city": "Bogo City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.034086, 11.033525],
     "markerOffset": [124.034086, 11.033525],
     "geoJson": {
@@ -1138,7 +1143,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Siocon",
             "city": "Bogo City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072211027"
           },
           "geometry": {
@@ -1168,8 +1173,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sudlonon",
     "name": "Barangay Sudlonon",
     "city": "Bogo City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.009425, 11.050222],
     "markerOffset": [124.009425, 11.050222],
     "geoJson": {
@@ -1180,7 +1185,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sudlonon",
             "city": "Bogo City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072211029"
           },
           "geometry": {
@@ -1204,8 +1209,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "taytayan",
     "name": "Barangay Taytayan",
     "city": "Bogo City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.989761, 11.045685],
     "markerOffset": [123.989761, 11.045685],
     "geoJson": {
@@ -1216,7 +1221,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Taytayan",
             "city": "Bogo City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072211028"
           },
           "geometry": {
@@ -1253,7 +1258,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Aguho",
     "city": "Daanbantayan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.00773, 11.26463],
     "markerOffset": [124.00773, 11.26463],
     "geoJson": {
@@ -1304,8 +1309,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bagay",
     "name": "Barangay Bagay",
     "city": "Daanbantayan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.027847, 11.201601],
     "markerOffset": [124.027847, 11.201601],
     "geoJson": {
@@ -1316,7 +1321,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bagay",
             "city": "Daanbantayan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072221002"
           },
           "geometry": {
@@ -1376,8 +1381,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bakhawan",
     "name": "Barangay Bakhawan",
     "city": "Daanbantayan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.972669, 11.202321],
     "markerOffset": [123.972669, 11.202321],
     "geoJson": {
@@ -1388,7 +1393,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bakhawan",
             "city": "Daanbantayan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072221003"
           },
           "geometry": {
@@ -1418,8 +1423,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bateria",
     "name": "Barangay Bateria",
     "city": "Daanbantayan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.022274, 11.14446],
     "markerOffset": [124.022274, 11.14446],
     "geoJson": {
@@ -1430,7 +1435,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bateria",
             "city": "Daanbantayan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072221004"
           },
           "geometry": {
@@ -1466,8 +1471,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bitoon",
     "name": "Barangay Bitoon",
     "city": "Daanbantayan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.001647, 11.229551],
     "markerOffset": [124.001647, 11.229551],
     "geoJson": {
@@ -1478,7 +1483,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bitoon",
             "city": "Daanbantayan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072221005"
           },
           "geometry": {
@@ -1524,8 +1529,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "calape",
     "name": "Barangay Calape",
     "city": "Daanbantayan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.024663, 11.177225],
     "markerOffset": [124.024663, 11.177225],
     "geoJson": {
@@ -1536,7 +1541,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Calape",
             "city": "Daanbantayan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072221006"
           },
           "geometry": {
@@ -1577,7 +1582,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Carnaza",
     "city": "Daanbantayan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.097981, 11.514282],
     "markerOffset": [124.097981, 11.514282],
     "geoJson": {
@@ -1630,8 +1635,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dalingding",
     "name": "Barangay Dalingding",
     "city": "Daanbantayan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.997997, 11.20097],
     "markerOffset": [123.997997, 11.20097],
     "geoJson": {
@@ -1642,7 +1647,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dalingding",
             "city": "Daanbantayan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072221008"
           },
           "geometry": {
@@ -1682,8 +1687,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lanao",
     "name": "Barangay Lanao",
     "city": "Daanbantayan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.028339, 11.251212],
     "markerOffset": [124.028339, 11.251212],
     "geoJson": {
@@ -1694,7 +1699,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lanao",
             "city": "Daanbantayan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072221009"
           },
           "geometry": {
@@ -1731,8 +1736,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "logon",
     "name": "Barangay Logon",
     "city": "Daanbantayan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.115861, 11.336573],
     "markerOffset": [124.115861, 11.336573],
     "geoJson": {
@@ -1743,7 +1748,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Logon",
             "city": "Daanbantayan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072221010"
           },
           "geometry": {
@@ -1788,8 +1793,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "malbago",
     "name": "Barangay Malbago",
     "city": "Daanbantayan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.024583, 11.161514],
     "markerOffset": [124.024583, 11.161514],
     "geoJson": {
@@ -1800,7 +1805,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Malbago",
             "city": "Daanbantayan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072221011"
           },
           "geometry": {
@@ -1833,8 +1838,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "daanbantayan-malingin",
     "name": "Barangay Malingin",
     "city": "Daanbantayan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.016381, 11.216931],
     "markerOffset": [124.016381, 11.216931],
     "geoJson": {
@@ -1845,7 +1850,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Malingin",
             "city": "Daanbantayan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072221012"
           },
           "geometry": {
@@ -1878,7 +1883,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Maya",
     "city": "Daanbantayan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.053604, 11.270179],
     "markerOffset": [124.053604, 11.270179],
     "geoJson": {
@@ -1930,8 +1935,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "pajo",
     "name": "Barangay Pajo",
     "city": "Daanbantayan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.016275, 11.237037],
     "markerOffset": [124.016275, 11.237037],
     "geoJson": {
@@ -1942,7 +1947,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Pajo",
             "city": "Daanbantayan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072221014"
           },
           "geometry": {
@@ -1975,8 +1980,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "paypay",
     "name": "Barangay Paypay",
     "city": "Daanbantayan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.986661, 11.213401],
     "markerOffset": [123.986661, 11.213401],
     "geoJson": {
@@ -1987,7 +1992,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Paypay",
             "city": "Daanbantayan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072221015"
           },
           "geometry": {
@@ -2021,8 +2026,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "poblacion",
     "name": "Barangay Poblacion",
     "city": "Daanbantayan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.00279, 11.252308],
     "markerOffset": [124.00279, 11.252308],
     "geoJson": {
@@ -2033,7 +2038,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Daanbantayan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072221016"
           },
           "geometry": {
@@ -2070,8 +2075,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "talisay",
     "name": "Barangay Talisay",
     "city": "Daanbantayan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.054417, 11.246599],
     "markerOffset": [124.054417, 11.246599],
     "geoJson": {
@@ -2082,7 +2087,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Talisay",
             "city": "Daanbantayan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072221017"
           },
           "geometry": {
@@ -2122,8 +2127,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tapilon",
     "name": "Barangay Tapilon",
     "city": "Daanbantayan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Scheduled Outage",
+    "timeRemaining": "3h 00m left",
     "coordinates": [124.032996, 11.268871],
     "markerOffset": [124.032996, 11.268871],
     "geoJson": {
@@ -2134,7 +2139,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tapilon",
             "city": "Daanbantayan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Scheduled Outage",
             "psgc": "PH072221018"
           },
           "geometry": {
@@ -2173,7 +2178,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Tinubdan",
     "city": "Daanbantayan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.006034, 11.181812],
     "markerOffset": [124.006034, 11.181812],
     "geoJson": {
@@ -2217,8 +2222,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tominjao",
     "name": "Barangay Tominjao",
     "city": "Daanbantayan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.036394, 11.228699],
     "markerOffset": [124.036394, 11.228699],
     "geoJson": {
@@ -2229,7 +2234,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tominjao",
             "city": "Daanbantayan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072221020"
           },
           "geometry": {
@@ -2271,8 +2276,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ampongol",
     "name": "Barangay Ampongol",
     "city": "Sogod, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.968148, 10.769275],
     "markerOffset": [123.968148, 10.769275],
     "geoJson": {
@@ -2283,7 +2288,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ampongol",
             "city": "Sogod, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072247001"
           },
           "geometry": {
@@ -2308,8 +2313,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bagakay",
     "name": "Barangay Bagakay",
     "city": "Sogod, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.93758, 10.78582],
     "markerOffset": [123.93758, 10.78582],
     "geoJson": {
@@ -2320,7 +2325,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bagakay",
             "city": "Sogod, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072247002"
           },
           "geometry": {
@@ -2344,8 +2349,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bagatayam",
     "name": "Barangay Bagatayam",
     "city": "Sogod, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.994584, 10.76116],
     "markerOffset": [123.994584, 10.76116],
     "geoJson": {
@@ -2356,7 +2361,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bagatayam",
             "city": "Sogod, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072247003"
           },
           "geometry": {
@@ -2382,8 +2387,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bawo",
     "name": "Barangay Bawo",
     "city": "Sogod, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.999623, 10.734189],
     "markerOffset": [123.999623, 10.734189],
     "geoJson": {
@@ -2394,7 +2399,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bawo",
             "city": "Sogod, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072247004"
           },
           "geometry": {
@@ -2423,7 +2428,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Cabalawan",
     "city": "Sogod, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.942877, 10.731906],
     "markerOffset": [123.942877, 10.731906],
     "geoJson": {
@@ -2460,8 +2465,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cabangahan",
     "name": "Barangay Cabangahan",
     "city": "Sogod, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.94131, 10.764509],
     "markerOffset": [123.94131, 10.764509],
     "geoJson": {
@@ -2472,7 +2477,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cabangahan",
             "city": "Sogod, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072247006"
           },
           "geometry": {
@@ -2496,8 +2501,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "calumboyan",
     "name": "Barangay Calumboyan",
     "city": "Sogod, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.019067, 10.794189],
     "markerOffset": [124.019067, 10.794189],
     "geoJson": {
@@ -2508,7 +2513,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Calumboyan",
             "city": "Sogod, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072247007"
           },
           "geometry": {
@@ -2535,8 +2540,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sogod-dakit",
     "name": "Barangay Dakit",
     "city": "Sogod, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.979214, 10.789158],
     "markerOffset": [123.979214, 10.789158],
     "geoJson": {
@@ -2547,7 +2552,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dakit",
             "city": "Sogod, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072247009"
           },
           "geometry": {
@@ -2572,8 +2577,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "damolog",
     "name": "Barangay Damolog",
     "city": "Sogod, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.997773, 10.774477],
     "markerOffset": [123.997773, 10.774477],
     "geoJson": {
@@ -2584,7 +2589,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Damolog",
             "city": "Sogod, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072247010"
           },
           "geometry": {
@@ -2611,8 +2616,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ibabao",
     "name": "Barangay Ibabao",
     "city": "Sogod, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.991364, 10.747841],
     "markerOffset": [123.991364, 10.747841],
     "geoJson": {
@@ -2623,7 +2628,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ibabao",
             "city": "Sogod, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072247011"
           },
           "geometry": {
@@ -2650,7 +2655,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Liki",
     "city": "Sogod, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.994484, 10.7965],
     "markerOffset": [123.994484, 10.7965],
     "geoJson": {
@@ -2690,8 +2695,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lubo",
     "name": "Barangay Lubo",
     "city": "Sogod, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.967703, 10.799386],
     "markerOffset": [123.967703, 10.799386],
     "geoJson": {
@@ -2702,7 +2707,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lubo",
             "city": "Sogod, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072247013"
           },
           "geometry": {
@@ -2725,8 +2730,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mohon",
     "name": "Barangay Mohon",
     "city": "Sogod, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.938648, 10.809165],
     "markerOffset": [123.938648, 10.809165],
     "geoJson": {
@@ -2737,7 +2742,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mohon",
             "city": "Sogod, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072247014"
           },
           "geometry": {
@@ -2762,8 +2767,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "nahus-an",
     "name": "Barangay Nahus-an",
     "city": "Sogod, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.929075, 10.703619],
     "markerOffset": [123.929075, 10.703619],
     "geoJson": {
@@ -2774,7 +2779,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Nahus-an",
             "city": "Sogod, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072247015"
           },
           "geometry": {
@@ -2803,8 +2808,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "pansoy",
     "name": "Barangay Pansoy",
     "city": "Sogod, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.968615, 10.740343],
     "markerOffset": [123.968615, 10.740343],
     "geoJson": {
@@ -2815,7 +2820,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Pansoy",
             "city": "Sogod, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072247019"
           },
           "geometry": {
@@ -2843,8 +2848,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sogod-poblacion",
     "name": "Barangay Poblacion",
     "city": "Sogod, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.9975, 10.742758],
     "markerOffset": [123.9975, 10.742758],
     "geoJson": {
@@ -2855,7 +2860,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Sogod, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072247016"
           },
           "geometry": {
@@ -2883,7 +2888,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Tabunok",
     "city": "Sogod, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.014471, 10.780779],
     "markerOffset": [124.014471, 10.780779],
     "geoJson": {
@@ -2921,8 +2926,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "takay",
     "name": "Barangay Takay",
     "city": "Sogod, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.955439, 10.803838],
     "markerOffset": [123.955439, 10.803838],
     "geoJson": {
@@ -2933,7 +2938,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Takay",
             "city": "Sogod, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072247018"
           },
           "geometry": {
@@ -2958,8 +2963,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bagacay",
     "name": "Barangay Bagacay",
     "city": "Borbon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.008446, 10.875051],
     "markerOffset": [124.008446, 10.875051],
     "geoJson": {
@@ -2970,7 +2975,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bagacay",
             "city": "Borbon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072213001"
           },
           "geometry": {
@@ -2996,8 +3001,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bili",
     "name": "Barangay Bili",
     "city": "Borbon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.955933, 10.837374],
     "markerOffset": [123.955933, 10.837374],
     "geoJson": {
@@ -3008,7 +3013,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bili",
             "city": "Borbon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072213002"
           },
           "geometry": {
@@ -3035,8 +3040,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bingay",
     "name": "Barangay Bingay",
     "city": "Borbon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.016171, 10.808131],
     "markerOffset": [124.016171, 10.808131],
     "geoJson": {
@@ -3047,7 +3052,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bingay",
             "city": "Borbon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072213003"
           },
           "geometry": {
@@ -3078,8 +3083,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bongdo",
     "name": "Barangay Bongdo",
     "city": "Borbon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.949575, 10.854658],
     "markerOffset": [123.949575, 10.854658],
     "geoJson": {
@@ -3090,7 +3095,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bongdo",
             "city": "Borbon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072213004"
           },
           "geometry": {
@@ -3124,7 +3129,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Bongdo Gua",
     "city": "Borbon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.966433, 10.853229],
     "markerOffset": [123.966433, 10.853229],
     "geoJson": {
@@ -3161,8 +3166,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bongoyan",
     "name": "Barangay Bongoyan",
     "city": "Borbon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.00059, 10.854886],
     "markerOffset": [124.00059, 10.854886],
     "geoJson": {
@@ -3173,7 +3178,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bongoyan",
             "city": "Borbon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072213006"
           },
           "geometry": {
@@ -3199,8 +3204,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cadaruhan",
     "name": "Barangay Cadaruhan",
     "city": "Borbon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.026921, 10.854986],
     "markerOffset": [124.026921, 10.854986],
     "geoJson": {
@@ -3211,7 +3216,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cadaruhan",
             "city": "Borbon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072213007"
           },
           "geometry": {
@@ -3245,8 +3250,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cajel",
     "name": "Barangay Cajel",
     "city": "Borbon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.964004, 10.823324],
     "markerOffset": [123.964004, 10.823324],
     "geoJson": {
@@ -3257,7 +3262,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cajel",
             "city": "Borbon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072213008"
           },
           "geometry": {
@@ -3288,8 +3293,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "campusong",
     "name": "Barangay Campusong",
     "city": "Borbon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.026702, 10.813397],
     "markerOffset": [124.026702, 10.813397],
     "geoJson": {
@@ -3300,7 +3305,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Campusong",
             "city": "Borbon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072213009"
           },
           "geometry": {
@@ -3325,8 +3330,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "clavera",
     "name": "Barangay Clavera",
     "city": "Borbon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.986074, 10.833951],
     "markerOffset": [123.986074, 10.833951],
     "geoJson": {
@@ -3337,7 +3342,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Clavera",
             "city": "Borbon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072213010"
           },
           "geometry": {
@@ -3368,7 +3373,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Don Gregorio Antigua (Taytayan)",
     "city": "Borbon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.972071, 10.877183],
     "markerOffset": [123.972071, 10.877183],
     "geoJson": {
@@ -3407,8 +3412,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "laaw",
     "name": "Barangay Laaw",
     "city": "Borbon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.980128, 10.845155],
     "markerOffset": [123.980128, 10.845155],
     "geoJson": {
@@ -3419,7 +3424,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Laaw",
             "city": "Borbon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072213012"
           },
           "geometry": {
@@ -3448,8 +3453,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lugo",
     "name": "Barangay Lugo",
     "city": "Borbon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.992249, 10.816783],
     "markerOffset": [123.992249, 10.816783],
     "geoJson": {
@@ -3460,7 +3465,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lugo",
             "city": "Borbon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072213013"
           },
           "geometry": {
@@ -3488,8 +3493,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "managase",
     "name": "Barangay Managase",
     "city": "Borbon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.988777, 10.875253],
     "markerOffset": [123.988777, 10.875253],
     "geoJson": {
@@ -3500,7 +3505,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Managase",
             "city": "Borbon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072213014"
           },
           "geometry": {
@@ -3527,8 +3532,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "borbon-poblacion",
     "name": "Barangay Poblacion",
     "city": "Borbon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.015964, 10.833872],
     "markerOffset": [124.015964, 10.833872],
     "geoJson": {
@@ -3539,7 +3544,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Borbon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072213015"
           },
           "geometry": {
@@ -3574,8 +3579,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sagay",
     "name": "Barangay Sagay",
     "city": "Borbon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.983631, 10.857072],
     "markerOffset": [123.983631, 10.857072],
     "geoJson": {
@@ -3586,7 +3591,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sagay",
             "city": "Borbon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072213016"
           },
           "geometry": {
@@ -3612,7 +3617,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay San Jose",
     "city": "Borbon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.954796, 10.876457],
     "markerOffset": [123.954796, 10.876457],
     "geoJson": {
@@ -3651,8 +3656,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabunan",
     "name": "Barangay Tabunan",
     "city": "Borbon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.033006, 10.871768],
     "markerOffset": [124.033006, 10.871768],
     "geoJson": {
@@ -3663,7 +3668,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tabunan",
             "city": "Borbon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072213018"
           },
           "geometry": {
@@ -3694,8 +3699,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tagnucan",
     "name": "Barangay Tagnucan",
     "city": "Borbon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.037586, 10.882124],
     "markerOffset": [124.037586, 10.882124],
     "geoJson": {
@@ -3706,7 +3711,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tagnucan",
             "city": "Borbon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072213019"
           },
           "geometry": {
@@ -3736,8 +3741,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "agsuwao",
     "name": "Barangay Agsuwao",
     "city": "Catmon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.936583, 10.675516],
     "markerOffset": [123.936583, 10.675516],
     "geoJson": {
@@ -3748,7 +3753,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Agsuwao",
             "city": "Catmon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072216001"
           },
           "geometry": {
@@ -3775,8 +3780,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "amancion",
     "name": "Barangay Amancion",
     "city": "Catmon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.916606, 10.637815],
     "markerOffset": [123.916606, 10.637815],
     "geoJson": {
@@ -3787,7 +3792,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Amancion",
             "city": "Catmon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072216002"
           },
           "geometry": {
@@ -3813,8 +3818,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "anapog",
     "name": "Barangay Anapog",
     "city": "Catmon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.911457, 10.665648],
     "markerOffset": [123.911457, 10.665648],
     "geoJson": {
@@ -3825,7 +3830,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Anapog",
             "city": "Catmon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072216003"
           },
           "geometry": {
@@ -3852,7 +3857,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Bactas",
     "city": "Catmon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.992829, 10.683989],
     "markerOffset": [123.992829, 10.683989],
     "geoJson": {
@@ -3888,8 +3893,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "basak",
     "name": "Barangay Basak",
     "city": "Catmon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.983885, 10.636932],
     "markerOffset": [123.983885, 10.636932],
     "geoJson": {
@@ -3900,7 +3905,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Basak",
             "city": "Catmon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072216006"
           },
           "geometry": {
@@ -3928,8 +3933,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "binongkalan",
     "name": "Barangay Binongkalan",
     "city": "Catmon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.015756, 10.630659],
     "markerOffset": [124.015756, 10.630659],
     "geoJson": {
@@ -3940,7 +3945,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Binongkalan",
             "city": "Catmon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072216007"
           },
           "geometry": {
@@ -3966,8 +3971,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bongyas",
     "name": "Barangay Bongyas",
     "city": "Catmon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.928145, 10.653812],
     "markerOffset": [123.928145, 10.653812],
     "geoJson": {
@@ -3978,7 +3983,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bongyas",
             "city": "Catmon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072216005"
           },
           "geometry": {
@@ -4003,8 +4008,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cabungaan",
     "name": "Barangay Cabungaan",
     "city": "Catmon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.985851, 10.660375],
     "markerOffset": [123.985851, 10.660375],
     "geoJson": {
@@ -4015,7 +4020,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cabungaan",
             "city": "Catmon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072216008"
           },
           "geometry": {
@@ -4040,8 +4045,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cambangkaya",
     "name": "Barangay Cambangkaya",
     "city": "Catmon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.953219, 10.647602],
     "markerOffset": [123.953219, 10.647602],
     "geoJson": {
@@ -4052,7 +4057,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cambangkaya",
             "city": "Catmon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072216009"
           },
           "geometry": {
@@ -4078,7 +4083,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Can-ibuang",
     "city": "Catmon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.989873, 10.70727],
     "markerOffset": [123.989873, 10.70727],
     "geoJson": {
@@ -4114,8 +4119,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "catmondaan",
     "name": "Barangay Catmondaan",
     "city": "Catmon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.009565, 10.672172],
     "markerOffset": [124.009565, 10.672172],
     "geoJson": {
@@ -4126,7 +4131,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Catmondaan",
             "city": "Catmon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072216011"
           },
           "geometry": {
@@ -4153,8 +4158,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "corazon",
     "name": "Barangay Corazon (Pob.)",
     "city": "Catmon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.008695, 10.721122],
     "markerOffset": [124.008695, 10.721122],
     "geoJson": {
@@ -4165,7 +4170,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Corazon (Pob.)",
             "city": "Catmon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072216019"
           },
           "geometry": {
@@ -4189,8 +4194,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "duyan",
     "name": "Barangay Duyan",
     "city": "Catmon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.979326, 10.71712],
     "markerOffset": [123.979326, 10.71712],
     "geoJson": {
@@ -4201,7 +4206,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Duyan",
             "city": "Catmon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072216012"
           },
           "geometry": {
@@ -4231,8 +4236,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "flores",
     "name": "Barangay Flores (Pob.)",
     "city": "Catmon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.006929, 10.714511],
     "markerOffset": [124.006929, 10.714511],
     "geoJson": {
@@ -4243,7 +4248,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Flores (Pob.)",
             "city": "Catmon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072216020"
           },
           "geometry": {
@@ -4271,8 +4276,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ginabucan",
     "name": "Barangay Ginabucan",
     "city": "Catmon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.96293, 10.670322],
     "markerOffset": [123.96293, 10.670322],
     "geoJson": {
@@ -4283,7 +4288,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ginabucan",
             "city": "Catmon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072216013"
           },
           "geometry": {
@@ -4309,7 +4314,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Macaas",
     "city": "Catmon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.004989, 10.698907],
     "markerOffset": [124.004989, 10.698907],
     "geoJson": {
@@ -4345,8 +4350,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "panalipan",
     "name": "Barangay Panalipan",
     "city": "Catmon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.011034, 10.648507],
     "markerOffset": [124.011034, 10.648507],
     "geoJson": {
@@ -4357,7 +4362,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Panalipan",
             "city": "Catmon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072216015"
           },
           "geometry": {
@@ -4385,8 +4390,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "san-jose-pob",
     "name": "Barangay San Jose Pob. (Catadman)",
     "city": "Catmon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.994625, 10.725713],
     "markerOffset": [123.994625, 10.725713],
     "geoJson": {
@@ -4397,7 +4402,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay San Jose Pob. (Catadman)",
             "city": "Catmon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072216018"
           },
           "geometry": {
@@ -4430,8 +4435,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabili",
     "name": "Barangay Tabili",
     "city": "Catmon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.96016, 10.699273],
     "markerOffset": [123.96016, 10.699273],
     "geoJson": {
@@ -4442,7 +4447,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tabili",
             "city": "Catmon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072216016"
           },
           "geometry": {
@@ -4471,8 +4476,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tinabyonan",
     "name": "Barangay Tinabyonan",
     "city": "Catmon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.975792, 10.690376],
     "markerOffset": [123.975792, 10.690376],
     "geoJson": {
@@ -4483,7 +4488,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tinabyonan",
             "city": "Catmon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072216017"
           },
           "geometry": {
@@ -4508,7 +4513,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Antipolo",
     "city": "Medellin, Cebu",
     "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "45m left",
     "coordinates": [123.955932, 11.161551],
     "markerOffset": [123.955932, 11.161551],
     "geoJson": {
@@ -4563,7 +4568,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Canhabagat",
     "city": "Medellin, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.995214, 11.110022],
     "markerOffset": [123.995214, 11.110022],
     "geoJson": {
@@ -4611,8 +4616,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "caputatan-norte",
     "name": "Barangay Caputatan Norte",
     "city": "Medellin, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.980133, 11.153324],
     "markerOffset": [123.980133, 11.153324],
     "geoJson": {
@@ -4623,7 +4628,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Caputatan Norte",
             "city": "Medellin, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072231008"
           },
           "geometry": {
@@ -4661,8 +4666,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "caputatan-sur",
     "name": "Barangay Caputatan Sur",
     "city": "Medellin, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.982501, 11.125188],
     "markerOffset": [123.982501, 11.125188],
     "geoJson": {
@@ -4673,7 +4678,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Caputatan Sur",
             "city": "Medellin, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072231009"
           },
           "geometry": {
@@ -4712,8 +4717,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "curva",
     "name": "Barangay Curva",
     "city": "Medellin, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.002223, 11.136627],
     "markerOffset": [124.002223, 11.136627],
     "geoJson": {
@@ -4724,7 +4729,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Curva",
             "city": "Medellin, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072231002"
           },
           "geometry": {
@@ -4760,8 +4765,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "daanlungsod",
     "name": "Barangay Daanlungsod",
     "city": "Medellin, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.957762, 11.145764],
     "markerOffset": [123.957762, 11.145764],
     "geoJson": {
@@ -4772,7 +4777,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Daanlungsod",
             "city": "Medellin, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072231003"
           },
           "geometry": {
@@ -4802,8 +4807,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dalingding-sur",
     "name": "Barangay Dalingding Sur",
     "city": "Medellin, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.985546, 11.179652],
     "markerOffset": [123.985546, 11.179652],
     "geoJson": {
@@ -4814,7 +4819,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dalingding Sur",
             "city": "Medellin, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072231004"
           },
           "geometry": {
@@ -4844,7 +4849,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Dayhagon",
     "city": "Medellin, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.98013, 11.084275],
     "markerOffset": [123.98013, 11.084275],
     "geoJson": {
@@ -4899,8 +4904,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "don-virgilio-gonzales",
     "name": "Barangay Don Virgilio Gonzales",
     "city": "Medellin, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.984274, 11.098231],
     "markerOffset": [123.984274, 11.098231],
     "geoJson": {
@@ -4911,7 +4916,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Don Virgilio Gonzales",
             "city": "Medellin, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072231016"
           },
           "geometry": {
@@ -4952,8 +4957,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "gibitngil",
     "name": "Barangay Gibitngil",
     "city": "Medellin, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.92142, 11.184788],
     "markerOffset": [123.92142, 11.184788],
     "geoJson": {
@@ -4964,7 +4969,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Gibitngil",
             "city": "Medellin, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072231006"
           },
           "geometry": {
@@ -5007,8 +5012,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kawit",
     "name": "Barangay Kawit",
     "city": "Medellin, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.957482, 11.189292],
     "markerOffset": [123.957482, 11.189292],
     "geoJson": {
@@ -5019,7 +5024,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kawit",
             "city": "Medellin, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072231010"
           },
           "geometry": {
@@ -5061,8 +5066,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lamintak-norte",
     "name": "Barangay Lamintak Norte",
     "city": "Medellin, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.966792, 11.102023],
     "markerOffset": [123.966792, 11.102023],
     "geoJson": {
@@ -5073,7 +5078,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lamintak Norte",
             "city": "Medellin, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072231011"
           },
           "geometry": {
@@ -5113,8 +5118,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lamintak-sur",
     "name": "Barangay Lamintak Sur",
     "city": "Medellin, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.966458, 11.09219],
     "markerOffset": [123.966458, 11.09219],
     "geoJson": {
@@ -5125,7 +5130,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lamintak Sur",
             "city": "Medellin, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072231017"
           },
           "geometry": {
@@ -5167,7 +5172,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Luy-a",
     "city": "Medellin, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.966377, 11.11267],
     "markerOffset": [123.966377, 11.11267],
     "geoJson": {
@@ -5220,8 +5225,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "maharuhay",
     "name": "Barangay Maharuhay",
     "city": "Medellin, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.971318, 11.18098],
     "markerOffset": [123.971318, 11.18098],
     "geoJson": {
@@ -5232,7 +5237,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Maharuhay",
             "city": "Medellin, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072231018"
           },
           "geometry": {
@@ -5262,8 +5267,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mahawak",
     "name": "Barangay Mahawak",
     "city": "Medellin, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.949623, 11.173891],
     "markerOffset": [123.949623, 11.173891],
     "geoJson": {
@@ -5274,7 +5279,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mahawak",
             "city": "Medellin, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072231019"
           },
           "geometry": {
@@ -5305,8 +5310,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "panugnawan",
     "name": "Barangay Panugnawan",
     "city": "Medellin, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.003219, 11.158052],
     "markerOffset": [124.003219, 11.158052],
     "geoJson": {
@@ -5317,7 +5322,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Panugnawan",
             "city": "Medellin, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072231013"
           },
           "geometry": {
@@ -5344,8 +5349,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "medellin-poblacion",
     "name": "Barangay Poblacion",
     "city": "Medellin, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.96286, 11.134201],
     "markerOffset": [123.96286, 11.134201],
     "geoJson": {
@@ -5356,7 +5361,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Medellin, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072231014"
           },
           "geometry": {
@@ -5402,8 +5407,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tindog",
     "name": "Barangay Tindog",
     "city": "Medellin, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.011731, 11.125879],
     "markerOffset": [124.011731, 11.125879],
     "geoJson": {
@@ -5414,7 +5419,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tindog",
             "city": "Medellin, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072231015"
           },
           "geometry": {
@@ -5461,7 +5466,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Anapog",
     "city": "San Remigio, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.910778, 11.028466],
     "markerOffset": [123.910778, 11.028466],
     "geoJson": {
@@ -5503,8 +5508,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "argawanon",
     "name": "Barangay Argawanon",
     "city": "San Remigio, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.955515, 11.073546],
     "markerOffset": [123.955515, 11.073546],
     "geoJson": {
@@ -5515,7 +5520,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Argawanon",
             "city": "San Remigio, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072243002"
           },
           "geometry": {
@@ -5550,8 +5555,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bagtic",
     "name": "Barangay Bagtic",
     "city": "San Remigio, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.921693, 10.899956],
     "markerOffset": [123.921693, 10.899956],
     "geoJson": {
@@ -5562,7 +5567,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bagtic",
             "city": "San Remigio, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072243003"
           },
           "geometry": {
@@ -5600,8 +5605,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bancasan",
     "name": "Barangay Bancasan",
     "city": "San Remigio, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.917777, 11.040684],
     "markerOffset": [123.917777, 11.040684],
     "geoJson": {
@@ -5612,7 +5617,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bancasan",
             "city": "San Remigio, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072243004"
           },
           "geometry": {
@@ -5643,8 +5648,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "batad",
     "name": "Barangay Batad",
     "city": "San Remigio, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.943799, 11.012341],
     "markerOffset": [123.943799, 11.012341],
     "geoJson": {
@@ -5655,7 +5660,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Batad",
             "city": "San Remigio, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072243005"
           },
           "geometry": {
@@ -5687,8 +5692,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "busogon",
     "name": "Barangay Busogon",
     "city": "San Remigio, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.931354, 10.962945],
     "markerOffset": [123.931354, 10.962945],
     "geoJson": {
@@ -5699,7 +5704,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Busogon",
             "city": "San Remigio, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072243006"
           },
           "geometry": {
@@ -5738,7 +5743,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Calambua",
     "city": "San Remigio, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.948292, 10.894253],
     "markerOffset": [123.948292, 10.894253],
     "geoJson": {
@@ -5783,8 +5788,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "canagahan",
     "name": "Barangay Canagahan",
     "city": "San Remigio, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.943092, 10.942048],
     "markerOffset": [123.943092, 10.942048],
     "geoJson": {
@@ -5795,7 +5800,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Canagahan",
             "city": "San Remigio, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072243008"
           },
           "geometry": {
@@ -5834,8 +5839,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dapdap",
     "name": "Barangay Dapdap",
     "city": "San Remigio, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.927832, 11.031885],
     "markerOffset": [123.927832, 11.031885],
     "geoJson": {
@@ -5846,7 +5851,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dapdap",
             "city": "San Remigio, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072243009"
           },
           "geometry": {
@@ -5872,8 +5877,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "gawaygaway",
     "name": "Barangay Gawaygaway",
     "city": "San Remigio, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.950976, 10.96369],
     "markerOffset": [123.950976, 10.96369],
     "geoJson": {
@@ -5884,7 +5889,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Gawaygaway",
             "city": "San Remigio, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072243010"
           },
           "geometry": {
@@ -5916,8 +5921,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "hagnaya",
     "name": "Barangay Hagnaya",
     "city": "San Remigio, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.94596, 11.088087],
     "markerOffset": [123.94596, 11.088087],
     "geoJson": {
@@ -5928,7 +5933,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Hagnaya",
             "city": "San Remigio, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072243011"
           },
           "geometry": {
@@ -5963,8 +5968,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kayam",
     "name": "Barangay Kayam",
     "city": "San Remigio, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.945691, 11.042118],
     "markerOffset": [123.945691, 11.042118],
     "geoJson": {
@@ -5975,7 +5980,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kayam",
             "city": "San Remigio, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072243012"
           },
           "geometry": {
@@ -6004,7 +6009,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Kinawahan",
     "city": "San Remigio, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.92628, 10.946368],
     "markerOffset": [123.92628, 10.946368],
     "geoJson": {
@@ -6049,8 +6054,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lambusan",
     "name": "Barangay Lambusan",
     "city": "San Remigio, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.939411, 10.99909],
     "markerOffset": [123.939411, 10.99909],
     "geoJson": {
@@ -6061,7 +6066,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lambusan",
             "city": "San Remigio, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072243014"
           },
           "geometry": {
@@ -6107,8 +6112,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lawis",
     "name": "Barangay Lawis",
     "city": "San Remigio, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.946919, 11.055917],
     "markerOffset": [123.946919, 11.055917],
     "geoJson": {
@@ -6119,7 +6124,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lawis",
             "city": "San Remigio, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072243015"
           },
           "geometry": {
@@ -6147,8 +6152,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "libaong",
     "name": "Barangay Libaong",
     "city": "San Remigio, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.938582, 10.924425],
     "markerOffset": [123.938582, 10.924425],
     "geoJson": {
@@ -6159,7 +6164,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Libaong",
             "city": "San Remigio, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072243016"
           },
           "geometry": {
@@ -6206,8 +6211,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "looc",
     "name": "Barangay Looc",
     "city": "San Remigio, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.94009, 11.066389],
     "markerOffset": [123.94009, 11.066389],
     "geoJson": {
@@ -6218,7 +6223,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Looc",
             "city": "San Remigio, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072243017"
           },
           "geometry": {
@@ -6251,8 +6256,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "luyang",
     "name": "Barangay Luyang",
     "city": "San Remigio, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.906404, 10.9158],
     "markerOffset": [123.906404, 10.9158],
     "geoJson": {
@@ -6263,7 +6268,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Luyang",
             "city": "San Remigio, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072243018"
           },
           "geometry": {
@@ -6312,7 +6317,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Mano",
     "city": "San Remigio, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.929807, 11.050743],
     "markerOffset": [123.929807, 11.050743],
     "geoJson": {
@@ -6360,8 +6365,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "san-remigio-poblacion",
     "name": "Barangay Poblacion",
     "city": "San Remigio, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.940833, 11.080853],
     "markerOffset": [123.940833, 11.080853],
     "geoJson": {
@@ -6372,7 +6377,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "San Remigio, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072243020"
           },
           "geometry": {
@@ -6407,8 +6412,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "punta",
     "name": "Barangay Punta",
     "city": "San Remigio, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.936415, 11.098868],
     "markerOffset": [123.936415, 11.098868],
     "geoJson": {
@@ -6419,7 +6424,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Punta",
             "city": "San Remigio, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072243021"
           },
           "geometry": {
@@ -6453,8 +6458,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sab-a",
     "name": "Barangay Sab-a",
     "city": "San Remigio, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.940206, 10.912496],
     "markerOffset": [123.940206, 10.912496],
     "geoJson": {
@@ -6465,7 +6470,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sab-a",
             "city": "San Remigio, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072243022"
           },
           "geometry": {
@@ -6517,8 +6522,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "san-miguel",
     "name": "Barangay San Miguel",
     "city": "San Remigio, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.93158, 10.889612],
     "markerOffset": [123.93158, 10.889612],
     "geoJson": {
@@ -6529,7 +6534,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay San Miguel",
             "city": "San Remigio, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072243023"
           },
           "geometry": {
@@ -6556,8 +6561,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tacup",
     "name": "Barangay Tacup",
     "city": "San Remigio, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.938228, 10.981248],
     "markerOffset": [123.938228, 10.981248],
     "geoJson": {
@@ -6568,7 +6573,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tacup",
             "city": "San Remigio, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072243024"
           },
           "geometry": {
@@ -6612,7 +6617,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Tambongon",
     "city": "San Remigio, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.923759, 11.015829],
     "markerOffset": [123.923759, 11.015829],
     "geoJson": {
@@ -6660,8 +6665,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "to-ong",
     "name": "Barangay To-ong",
     "city": "San Remigio, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.942774, 11.027848],
     "markerOffset": [123.942774, 11.027848],
     "geoJson": {
@@ -6672,7 +6677,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay To-ong",
             "city": "San Remigio, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072243026"
           },
           "geometry": {
@@ -6699,8 +6704,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "victoria",
     "name": "Barangay Victoria",
     "city": "San Remigio, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.915812, 10.930925],
     "markerOffset": [123.915812, 10.930925],
     "geoJson": {
@@ -6711,7 +6716,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Victoria",
             "city": "San Remigio, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072243027"
           },
           "geometry": {
@@ -6757,8 +6762,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "alang-alang",
     "name": "Barangay Alang-alang",
     "city": "Tabogon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.024632, 10.919817],
     "markerOffset": [124.024632, 10.919817],
     "geoJson": {
@@ -6769,7 +6774,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Alang-alang",
             "city": "Tabogon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072248001"
           },
           "geometry": {
@@ -6796,8 +6801,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "caduawan",
     "name": "Barangay Caduawan",
     "city": "Tabogon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.967328, 10.922676],
     "markerOffset": [123.967328, 10.922676],
     "geoJson": {
@@ -6808,7 +6813,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Caduawan",
             "city": "Tabogon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072248002"
           },
           "geometry": {
@@ -6835,8 +6840,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "camoboan",
     "name": "Barangay Camoboan",
     "city": "Tabogon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.033142, 10.957503],
     "markerOffset": [124.033142, 10.957503],
     "geoJson": {
@@ -6847,7 +6852,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Camoboan",
             "city": "Tabogon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072248004"
           },
           "geometry": {
@@ -6877,7 +6882,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Canaocanao",
     "city": "Tabogon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.000161, 10.898098],
     "markerOffset": [124.000161, 10.898098],
     "geoJson": {
@@ -6923,8 +6928,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "combado",
     "name": "Barangay Combado",
     "city": "Tabogon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.012954, 10.943538],
     "markerOffset": [124.012954, 10.943538],
     "geoJson": {
@@ -6935,7 +6940,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Combado",
             "city": "Tabogon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072248006"
           },
           "geometry": {
@@ -6961,8 +6966,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "daantabogon",
     "name": "Barangay Daantabogon",
     "city": "Tabogon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.025916, 10.912106],
     "markerOffset": [124.025916, 10.912106],
     "geoJson": {
@@ -6973,7 +6978,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Daantabogon",
             "city": "Tabogon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072248007"
           },
           "geometry": {
@@ -7004,8 +7009,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ilihan",
     "name": "Barangay Ilihan",
     "city": "Tabogon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.967625, 10.902473],
     "markerOffset": [123.967625, 10.902473],
     "geoJson": {
@@ -7016,7 +7021,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ilihan",
             "city": "Tabogon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072248008"
           },
           "geometry": {
@@ -7044,8 +7049,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kal-anan",
     "name": "Barangay Kal-anan",
     "city": "Tabogon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.013764, 10.936585],
     "markerOffset": [124.013764, 10.936585],
     "geoJson": {
@@ -7056,7 +7061,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kal-anan",
             "city": "Tabogon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072248003"
           },
           "geometry": {
@@ -7085,8 +7090,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "labangon",
     "name": "Barangay Labangon",
     "city": "Tabogon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.995292, 10.916304],
     "markerOffset": [123.995292, 10.916304],
     "geoJson": {
@@ -7097,7 +7102,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Labangon",
             "city": "Tabogon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072248009"
           },
           "geometry": {
@@ -7132,7 +7137,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Libjo",
     "city": "Tabogon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.964387, 10.94311],
     "markerOffset": [123.964387, 10.94311],
     "geoJson": {
@@ -7172,8 +7177,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "loong",
     "name": "Barangay Loong",
     "city": "Tabogon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.998291, 10.932127],
     "markerOffset": [123.998291, 10.932127],
     "geoJson": {
@@ -7184,7 +7189,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Loong",
             "city": "Tabogon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072248011"
           },
           "geometry": {
@@ -7212,8 +7217,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mabuli",
     "name": "Barangay Mabuli",
     "city": "Tabogon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.980784, 10.948542],
     "markerOffset": [123.980784, 10.948542],
     "geoJson": {
@@ -7224,7 +7229,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mabuli",
             "city": "Tabogon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072248012"
           },
           "geometry": {
@@ -7256,8 +7261,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabogon-managase",
     "name": "Barangay Managase",
     "city": "Tabogon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.981268, 10.899141],
     "markerOffset": [123.981268, 10.899141],
     "geoJson": {
@@ -7268,7 +7273,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Managase",
             "city": "Tabogon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072248013"
           },
           "geometry": {
@@ -7294,8 +7299,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "manlagtang",
     "name": "Barangay Manlagtang",
     "city": "Tabogon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.995504, 10.95006],
     "markerOffset": [123.995504, 10.95006],
     "geoJson": {
@@ -7306,7 +7311,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Manlagtang",
             "city": "Tabogon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072248014"
           },
           "geometry": {
@@ -7334,8 +7339,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "maslog",
     "name": "Barangay Maslog",
     "city": "Tabogon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.022474, 10.927536],
     "markerOffset": [124.022474, 10.927536],
     "geoJson": {
@@ -7346,7 +7351,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Maslog",
             "city": "Tabogon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072248015"
           },
           "geometry": {
@@ -7381,7 +7386,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Muabog",
     "city": "Tabogon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.040947, 10.895978],
     "markerOffset": [124.040947, 10.895978],
     "geoJson": {
@@ -7426,8 +7431,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "pio",
     "name": "Barangay Pio",
     "city": "Tabogon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.022813, 10.935068],
     "markerOffset": [124.022813, 10.935068],
     "geoJson": {
@@ -7438,7 +7443,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Pio",
             "city": "Tabogon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072248017"
           },
           "geometry": {
@@ -7465,8 +7470,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabogon-poblacion",
     "name": "Barangay Poblacion",
     "city": "Tabogon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.026347, 10.941574],
     "markerOffset": [124.026347, 10.941574],
     "geoJson": {
@@ -7477,7 +7482,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Tabogon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072248018"
           },
           "geometry": {
@@ -7500,8 +7505,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "salag",
     "name": "Barangay Salag",
     "city": "Tabogon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.031174, 10.977222],
     "markerOffset": [124.031174, 10.977222],
     "geoJson": {
@@ -7512,7 +7517,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Salag",
             "city": "Tabogon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072248019"
           },
           "geometry": {
@@ -7545,8 +7550,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabogon-sambag",
     "name": "Barangay Sambag",
     "city": "Tabogon, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.00897, 10.953145],
     "markerOffset": [124.00897, 10.953145],
     "geoJson": {
@@ -7557,7 +7562,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sambag",
             "city": "Tabogon, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072248020"
           },
           "geometry": {
@@ -7581,8 +7586,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "san-isidro",
     "name": "Barangay San Isidro",
     "city": "Tabogon, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.020617, 10.967852],
     "markerOffset": [124.020617, 10.967852],
     "geoJson": {
@@ -7593,7 +7598,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay San Isidro",
             "city": "Tabogon, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072248021"
           },
           "geometry": {
@@ -7619,7 +7624,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay San Vicente",
     "city": "Tabogon, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.020133, 10.955155],
     "markerOffset": [124.020133, 10.955155],
     "geoJson": {
@@ -7654,8 +7659,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "somosa",
     "name": "Barangay Somosa",
     "city": "Tabogon, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.999956, 10.969724],
     "markerOffset": [123.999956, 10.969724],
     "geoJson": {
@@ -7666,7 +7671,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Somosa",
             "city": "Tabogon, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072248023"
           },
           "geometry": {
@@ -7694,8 +7699,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "taba-ao",
     "name": "Barangay Taba-ao",
     "city": "Tabogon, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.021792, 10.89707],
     "markerOffset": [124.021792, 10.89707],
     "geoJson": {
@@ -7706,7 +7711,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Taba-ao",
             "city": "Tabogon, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072248024"
           },
           "geometry": {
@@ -7742,8 +7747,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tapul",
     "name": "Barangay Tapul",
     "city": "Tabogon, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.025135, 10.946354],
     "markerOffset": [124.025135, 10.946354],
     "geoJson": {
@@ -7754,7 +7759,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tapul",
             "city": "Tabogon, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072248025"
           },
           "geometry": {
@@ -7778,8 +7783,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "baring",
     "name": "Barangay Baring",
     "city": "Carmen, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.003318, 10.589387],
     "markerOffset": [124.003318, 10.589387],
     "geoJson": {
@@ -7790,7 +7795,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Baring",
             "city": "Carmen, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072215001"
           },
           "geometry": {
@@ -7824,8 +7829,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cantipay",
     "name": "Barangay Cantipay",
     "city": "Carmen, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.006195, 10.608575],
     "markerOffset": [124.006195, 10.608575],
     "geoJson": {
@@ -7836,7 +7841,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cantipay",
             "city": "Carmen, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072215002"
           },
           "geometry": {
@@ -7867,7 +7872,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Cantukong",
     "city": "Carmen, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.992704, 10.616291],
     "markerOffset": [123.992704, 10.616291],
     "geoJson": {
@@ -7904,8 +7909,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cantumog",
     "name": "Barangay Cantumog",
     "city": "Carmen, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.992654, 10.599437],
     "markerOffset": [123.992654, 10.599437],
     "geoJson": {
@@ -7916,7 +7921,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cantumog",
             "city": "Carmen, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072215003"
           },
           "geometry": {
@@ -7949,8 +7954,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "caurasan",
     "name": "Barangay Caurasan",
     "city": "Carmen, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.934626, 10.62126],
     "markerOffset": [123.934626, 10.62126],
     "geoJson": {
@@ -7961,7 +7966,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Caurasan",
             "city": "Carmen, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072215005"
           },
           "geometry": {
@@ -7989,8 +7994,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cogon-east",
     "name": "Barangay Cogon East",
     "city": "Carmen, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.020079, 10.591412],
     "markerOffset": [124.020079, 10.591412],
     "geoJson": {
@@ -8001,7 +8006,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cogon East",
             "city": "Carmen, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072215009"
           },
           "geometry": {
@@ -8024,8 +8029,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cogon-west",
     "name": "Barangay Cogon West",
     "city": "Carmen, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.017243, 10.592243],
     "markerOffset": [124.017243, 10.592243],
     "geoJson": {
@@ -8036,7 +8041,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cogon West",
             "city": "Carmen, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072215021"
           },
           "geometry": {
@@ -8060,8 +8065,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "corte",
     "name": "Barangay Corte",
     "city": "Carmen, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.97013, 10.588914],
     "markerOffset": [123.97013, 10.588914],
     "geoJson": {
@@ -8072,7 +8077,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Corte",
             "city": "Carmen, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072215006"
           },
           "geometry": {
@@ -8104,7 +8109,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Dawis Norte",
     "city": "Carmen, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.014476, 10.57679],
     "markerOffset": [124.014476, 10.57679],
     "geoJson": {
@@ -8144,8 +8149,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dawis-sur",
     "name": "Barangay Dawis Sur",
     "city": "Carmen, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.013136, 10.567343],
     "markerOffset": [124.013136, 10.567343],
     "geoJson": {
@@ -8156,7 +8161,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dawis Sur",
             "city": "Carmen, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072215008"
           },
           "geometry": {
@@ -8183,8 +8188,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "carmen-hagnaya",
     "name": "Barangay Hagnaya",
     "city": "Carmen, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.977438, 10.569786],
     "markerOffset": [123.977438, 10.569786],
     "geoJson": {
@@ -8195,7 +8200,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Hagnaya",
             "city": "Carmen, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072215010"
           },
           "geometry": {
@@ -8223,8 +8228,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ipil",
     "name": "Barangay Ipil",
     "city": "Carmen, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.986216, 10.583788],
     "markerOffset": [123.986216, 10.583788],
     "geoJson": {
@@ -8235,7 +8240,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ipil",
             "city": "Carmen, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072215011"
           },
           "geometry": {
@@ -8267,8 +8272,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lanipga",
     "name": "Barangay Lanipga",
     "city": "Carmen, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.949195, 10.585068],
     "markerOffset": [123.949195, 10.585068],
     "geoJson": {
@@ -8279,7 +8284,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lanipga",
             "city": "Carmen, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072215012"
           },
           "geometry": {
@@ -8308,8 +8313,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "liboron",
     "name": "Barangay Liboron",
     "city": "Carmen, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.928821, 10.595401],
     "markerOffset": [123.928821, 10.595401],
     "geoJson": {
@@ -8320,7 +8325,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Liboron",
             "city": "Carmen, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072215013"
           },
           "geometry": {
@@ -8358,7 +8363,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Lower Natimao-an",
     "city": "Carmen, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.982946, 10.617906],
     "markerOffset": [123.982946, 10.617906],
     "geoJson": {
@@ -8396,8 +8401,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "carmen-luyang",
     "name": "Barangay Luyang",
     "city": "Carmen, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.023115, 10.598078],
     "markerOffset": [124.023115, 10.598078],
     "geoJson": {
@@ -8408,7 +8413,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Luyang",
             "city": "Carmen, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072215015"
           },
           "geometry": {
@@ -8438,8 +8443,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "carmen-poblacion",
     "name": "Barangay Poblacion",
     "city": "Carmen, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.017475, 10.582391],
     "markerOffset": [124.017475, 10.582391],
     "geoJson": {
@@ -8450,7 +8455,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Carmen, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072215016"
           },
           "geometry": {
@@ -8478,8 +8483,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "puente",
     "name": "Barangay Puente",
     "city": "Carmen, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.01916, 10.614598],
     "markerOffset": [124.01916, 10.614598],
     "geoJson": {
@@ -8490,7 +8495,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Puente",
             "city": "Carmen, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072215017"
           },
           "geometry": {
@@ -8520,8 +8525,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sac-on",
     "name": "Barangay Sac-on",
     "city": "Carmen, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.963448, 10.599816],
     "markerOffset": [123.963448, 10.599816],
     "geoJson": {
@@ -8532,7 +8537,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sac-on",
             "city": "Carmen, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072215018"
           },
           "geometry": {
@@ -8560,8 +8565,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "triumfo",
     "name": "Barangay Triumfo",
     "city": "Carmen, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.997622, 10.567831],
     "markerOffset": [123.997622, 10.567831],
     "geoJson": {
@@ -8572,7 +8577,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Triumfo",
             "city": "Carmen, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072215019"
           },
           "geometry": {
@@ -8604,7 +8609,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Upper Natimao-an",
     "city": "Carmen, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.966061, 10.619446],
     "markerOffset": [123.966061, 10.619446],
     "geoJson": {
@@ -8646,8 +8651,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "baliang",
     "name": "Barangay Baliang",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.956609, 10.507659],
     "markerOffset": [123.956609, 10.507659],
     "geoJson": {
@@ -8658,7 +8663,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Baliang",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223001"
           },
           "geometry": {
@@ -8689,8 +8694,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bayabas",
     "name": "Barangay Bayabas",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.865516, 10.5855],
     "markerOffset": [123.865516, 10.5855],
     "geoJson": {
@@ -8701,7 +8706,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bayabas",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223002"
           },
           "geometry": {
@@ -8739,8 +8744,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "binaliw",
     "name": "Barangay Binaliw",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.984346, 10.546761],
     "markerOffset": [123.984346, 10.546761],
     "geoJson": {
@@ -8751,7 +8756,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Binaliw",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223004"
           },
           "geometry": {
@@ -8781,8 +8786,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cabungahan",
     "name": "Barangay Cabungahan",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.983696, 10.518016],
     "markerOffset": [123.983696, 10.518016],
     "geoJson": {
@@ -8793,7 +8798,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cabungahan",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223006"
           },
           "geometry": {
@@ -8824,8 +8829,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cagat-lamac",
     "name": "Barangay Cagat-Lamac",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.999849, 10.552854],
     "markerOffset": [123.999849, 10.552854],
     "geoJson": {
@@ -8836,7 +8841,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cagat-Lamac",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223007"
           },
           "geometry": {
@@ -8863,7 +8868,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Cahumayan",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.950384, 10.563932],
     "markerOffset": [123.950384, 10.563932],
     "geoJson": {
@@ -8899,8 +8904,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cambanay",
     "name": "Barangay Cambanay",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.007014, 10.540497],
     "markerOffset": [124.007014, 10.540497],
     "geoJson": {
@@ -8911,7 +8916,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cambanay",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223009"
           },
           "geometry": {
@@ -8938,8 +8943,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cambubho",
     "name": "Barangay Cambubho",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.882089, 10.543498],
     "markerOffset": [123.882089, 10.543498],
     "geoJson": {
@@ -8950,7 +8955,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cambubho",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223010"
           },
           "geometry": {
@@ -8981,8 +8986,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "cogon-cruz",
     "name": "Barangay Cogon-Cruz",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.001751, 10.514595],
     "markerOffset": [124.001751, 10.514595],
     "geoJson": {
@@ -8993,7 +8998,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cogon-Cruz",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223011"
           },
           "geometry": {
@@ -9021,8 +9026,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "danasan",
     "name": "Barangay Danasan",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.858049, 10.560879],
     "markerOffset": [123.858049, 10.560879],
     "geoJson": {
@@ -9033,7 +9038,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Danasan",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223012"
           },
           "geometry": {
@@ -9065,8 +9070,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dungga",
     "name": "Barangay Dungga",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.942372, 10.54769],
     "markerOffset": [123.942372, 10.54769],
     "geoJson": {
@@ -9077,7 +9082,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dungga",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223013"
           },
           "geometry": {
@@ -9107,7 +9112,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Dunggoan",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.014218, 10.556814],
     "markerOffset": [124.014218, 10.556814],
     "geoJson": {
@@ -9145,8 +9150,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "guinacot",
     "name": "Barangay Guinacot",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.000951, 10.526432],
     "markerOffset": [124.000951, 10.526432],
     "geoJson": {
@@ -9157,7 +9162,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Guinacot",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223015"
           },
           "geometry": {
@@ -9186,8 +9191,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "guinsay",
     "name": "Barangay Guinsay",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.02277, 10.545408],
     "markerOffset": [124.02277, 10.545408],
     "geoJson": {
@@ -9198,7 +9203,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Guinsay",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223016"
           },
           "geometry": {
@@ -9230,8 +9235,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ibo",
     "name": "Barangay Ibo",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.958607, 10.523103],
     "markerOffset": [123.958607, 10.523103],
     "geoJson": {
@@ -9242,7 +9247,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ibo",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223017"
           },
           "geometry": {
@@ -9271,8 +9276,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "langosig",
     "name": "Barangay Langosig",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.90642, 10.51827],
     "markerOffset": [123.90642, 10.51827],
     "geoJson": {
@@ -9283,7 +9288,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Langosig",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223018"
           },
           "geometry": {
@@ -9311,8 +9316,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lawaan",
     "name": "Barangay Lawaan",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.903628, 10.54626],
     "markerOffset": [123.903628, 10.54626],
     "geoJson": {
@@ -9323,7 +9328,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lawaan",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223019"
           },
           "geometry": {
@@ -9351,7 +9356,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Licos",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.916209, 10.502013],
     "markerOffset": [123.916209, 10.502013],
     "geoJson": {
@@ -9391,8 +9396,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "danao-looc",
     "name": "Barangay Looc",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.02207, 10.508704],
     "markerOffset": [124.02207, 10.508704],
     "geoJson": {
@@ -9403,7 +9408,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Looc",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223021"
           },
           "geometry": {
@@ -9435,8 +9440,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "magtagobtob",
     "name": "Barangay Magtagobtob",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.895683, 10.564848],
     "markerOffset": [123.895683, 10.564848],
     "geoJson": {
@@ -9447,7 +9452,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Magtagobtob",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223022"
           },
           "geometry": {
@@ -9477,8 +9482,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "malapoc",
     "name": "Barangay Malapoc",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.998898, 10.53366],
     "markerOffset": [123.998898, 10.53366],
     "geoJson": {
@@ -9489,7 +9494,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Malapoc",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223023"
           },
           "geometry": {
@@ -9516,8 +9521,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "manlayag",
     "name": "Barangay Manlayag",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.977006, 10.503833],
     "markerOffset": [123.977006, 10.503833],
     "geoJson": {
@@ -9528,7 +9533,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Manlayag",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223024"
           },
           "geometry": {
@@ -9558,8 +9563,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mantija",
     "name": "Barangay Mantija",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.954452, 10.540612],
     "markerOffset": [123.954452, 10.540612],
     "geoJson": {
@@ -9570,7 +9575,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mantija",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223025"
           },
           "geometry": {
@@ -9601,7 +9606,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Masaba",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.968012, 10.550483],
     "markerOffset": [123.968012, 10.550483],
     "geoJson": {
@@ -9641,8 +9646,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "danao-maslog",
     "name": "Barangay Maslog",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.018267, 10.482689],
     "markerOffset": [124.018267, 10.482689],
     "geoJson": {
@@ -9653,7 +9658,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Maslog",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223027"
           },
           "geometry": {
@@ -9680,8 +9685,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "nangka",
     "name": "Barangay Nangka",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.941275, 10.528115],
     "markerOffset": [123.941275, 10.528115],
     "geoJson": {
@@ -9692,7 +9697,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Nangka",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223028"
           },
           "geometry": {
@@ -9718,8 +9723,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "oguis",
     "name": "Barangay Oguis",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.924697, 10.547323],
     "markerOffset": [123.924697, 10.547323],
     "geoJson": {
@@ -9730,7 +9735,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Oguis",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223029"
           },
           "geometry": {
@@ -9757,8 +9762,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "pili",
     "name": "Barangay Pili",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.898051, 10.58586],
     "markerOffset": [123.898051, 10.58586],
     "geoJson": {
@@ -9769,7 +9774,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Pili",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223030"
           },
           "geometry": {
@@ -9793,8 +9798,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "danao-poblacion",
     "name": "Barangay Poblacion",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.025504, 10.520447],
     "markerOffset": [124.025504, 10.520447],
     "geoJson": {
@@ -9805,7 +9810,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223031"
           },
           "geometry": {
@@ -9832,7 +9837,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Quisol",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.979772, 10.532518],
     "markerOffset": [123.979772, 10.532518],
     "geoJson": {
@@ -9870,8 +9875,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sabang",
     "name": "Barangay Sabang",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.01656, 10.497434],
     "markerOffset": [124.01656, 10.497434],
     "geoJson": {
@@ -9882,7 +9887,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sabang",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223033"
           },
           "geometry": {
@@ -9914,8 +9919,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sacsac",
     "name": "Barangay Sacsac",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.894574, 10.530024],
     "markerOffset": [123.894574, 10.530024],
     "geoJson": {
@@ -9926,7 +9931,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sacsac",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223034"
           },
           "geometry": {
@@ -9953,8 +9958,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sandayong-norte",
     "name": "Barangay Sandayong Norte",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.990032, 10.552845],
     "markerOffset": [123.990032, 10.552845],
     "geoJson": {
@@ -9965,7 +9970,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sandayong Norte",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223035"
           },
           "geometry": {
@@ -9990,8 +9995,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sandayong-sur",
     "name": "Barangay Sandayong Sur",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.997188, 10.493951],
     "markerOffset": [123.997188, 10.493951],
     "geoJson": {
@@ -10002,7 +10007,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sandayong Sur",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223036"
           },
           "geometry": {
@@ -10035,8 +10040,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "santa-rosa",
     "name": "Barangay Santa Rosa",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.967788, 10.532231],
     "markerOffset": [123.967788, 10.532231],
     "geoJson": {
@@ -10047,7 +10052,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Santa Rosa",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223037"
           },
           "geometry": {
@@ -10075,7 +10080,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Santican",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.925412, 10.570687],
     "markerOffset": [123.925412, 10.570687],
     "geoJson": {
@@ -10113,8 +10118,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sibacan",
     "name": "Barangay Sibacan",
     "city": "Danao City, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.92332, 10.528937],
     "markerOffset": [123.92332, 10.528937],
     "geoJson": {
@@ -10125,7 +10130,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sibacan",
             "city": "Danao City, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072223039"
           },
           "geometry": {
@@ -10151,8 +10156,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "suba",
     "name": "Barangay Suba",
     "city": "Danao City, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.028458, 10.525653],
     "markerOffset": [124.028458, 10.525653],
     "geoJson": {
@@ -10163,7 +10168,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Suba",
             "city": "Danao City, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072223040"
           },
           "geometry": {
@@ -10186,8 +10191,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "taboc",
     "name": "Barangay Taboc",
     "city": "Danao City, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.017947, 10.529453],
     "markerOffset": [124.017947, 10.529453],
     "geoJson": {
@@ -10198,7 +10203,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Taboc",
             "city": "Danao City, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072223041"
           },
           "geometry": {
@@ -10227,8 +10232,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "taytay",
     "name": "Barangay Taytay",
     "city": "Danao City, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [124.02686, 10.53087],
     "markerOffset": [124.02686, 10.53087],
     "geoJson": {
@@ -10239,7 +10244,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Taytay",
             "city": "Danao City, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072223042"
           },
           "geometry": {
@@ -10264,8 +10269,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "togonon",
     "name": "Barangay Togonon",
     "city": "Danao City, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.932811, 10.51405],
     "markerOffset": [123.932811, 10.51405],
     "geoJson": {
@@ -10276,7 +10281,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Togonon",
             "city": "Danao City, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072223043"
           },
           "geometry": {
@@ -10301,7 +10306,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Tuburan Sur",
     "city": "Danao City, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [124.014332, 10.513118],
     "markerOffset": [124.014332, 10.513118],
     "geoJson": {
@@ -10340,8 +10345,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bongon",
     "name": "Barangay Bongon",
     "city": "Tabuelan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.903556, 10.802266],
     "markerOffset": [123.903556, 10.802266],
     "geoJson": {
@@ -10352,7 +10357,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bongon",
             "city": "Tabuelan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072249001"
           },
           "geometry": {
@@ -10400,8 +10405,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "dalid",
     "name": "Barangay Dalid",
     "city": "Tabuelan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.920796, 10.826906],
     "markerOffset": [123.920796, 10.826906],
     "geoJson": {
@@ -10412,7 +10417,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Dalid",
             "city": "Tabuelan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072249010"
           },
           "geometry": {
@@ -10463,8 +10468,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kanlim-ao",
     "name": "Barangay Kanlim-ao",
     "city": "Tabuelan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.932371, 10.856607],
     "markerOffset": [123.932371, 10.856607],
     "geoJson": {
@@ -10475,7 +10480,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kanlim-ao",
             "city": "Tabuelan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072249005"
           },
           "geometry": {
@@ -10514,8 +10519,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kanluhangon",
     "name": "Barangay Kanluhangon",
     "city": "Tabuelan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.940973, 10.878657],
     "markerOffset": [123.940973, 10.878657],
     "geoJson": {
@@ -10526,7 +10531,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kanluhangon",
             "city": "Tabuelan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072249006"
           },
           "geometry": {
@@ -10554,8 +10559,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kantubaon",
     "name": "Barangay Kantubaon",
     "city": "Tabuelan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.918242, 10.873853],
     "markerOffset": [123.918242, 10.873853],
     "geoJson": {
@@ -10566,7 +10571,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kantubaon",
             "city": "Tabuelan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072249008"
           },
           "geometry": {
@@ -10599,7 +10604,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Mabunao",
     "city": "Tabuelan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.910316, 10.842343],
     "markerOffset": [123.910316, 10.842343],
     "geoJson": {
@@ -10649,8 +10654,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "maravilla",
     "name": "Barangay Maravilla",
     "city": "Tabuelan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.898447, 10.892706],
     "markerOffset": [123.898447, 10.892706],
     "geoJson": {
@@ -10661,7 +10666,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Maravilla",
             "city": "Tabuelan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072249014"
           },
           "geometry": {
@@ -10694,8 +10699,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "olivo",
     "name": "Barangay Olivo",
     "city": "Tabuelan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.887445, 10.855397],
     "markerOffset": [123.887445, 10.855397],
     "geoJson": {
@@ -10706,7 +10711,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Olivo",
             "city": "Tabuelan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072249015"
           },
           "geometry": {
@@ -10738,8 +10743,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabuelan-poblacion",
     "name": "Barangay Poblacion",
     "city": "Tabuelan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.87285, 10.809762],
     "markerOffset": [123.87285, 10.809762],
     "geoJson": {
@@ -10750,7 +10755,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Poblacion",
             "city": "Tabuelan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072249016"
           },
           "geometry": {
@@ -10792,8 +10797,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tabuelan-tabunok",
     "name": "Barangay Tabunok",
     "city": "Tabuelan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.881096, 10.836931],
     "markerOffset": [123.881096, 10.836931],
     "geoJson": {
@@ -10804,7 +10809,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tabunok",
             "city": "Tabuelan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072249017"
           },
           "geometry": {
@@ -10850,8 +10855,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tigbawan",
     "name": "Barangay Tigbawan",
     "city": "Tabuelan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.893133, 10.873156],
     "markerOffset": [123.893133, 10.873156],
     "geoJson": {
@@ -10862,7 +10867,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tigbawan",
             "city": "Tabuelan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072249018"
           },
           "geometry": {
@@ -10893,7 +10898,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Villahermosa",
     "city": "Tabuelan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.906343, 10.856627],
     "markerOffset": [123.906343, 10.856627],
     "geoJson": {
@@ -10931,8 +10936,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "alegria",
     "name": "Barangay Alegria",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.841243, 10.70253],
     "markerOffset": [123.841243, 10.70253],
     "geoJson": {
@@ -10943,7 +10948,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Alegria",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252001"
           },
           "geometry": {
@@ -10970,8 +10975,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "amatugan",
     "name": "Barangay Amatugan",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.891351, 10.678444],
     "markerOffset": [123.891351, 10.678444],
     "geoJson": {
@@ -10982,7 +10987,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Amatugan",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252002"
           },
           "geometry": {
@@ -11008,8 +11013,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tuburan-antipolo",
     "name": "Barangay Antipolo",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.772527, 10.657295],
     "markerOffset": [123.772527, 10.657295],
     "geoJson": {
@@ -11020,7 +11025,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Antipolo",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252003"
           },
           "geometry": {
@@ -11045,8 +11050,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "apalan",
     "name": "Barangay Apalan",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.840105, 10.748654],
     "markerOffset": [123.840105, 10.748654],
     "geoJson": {
@@ -11057,7 +11062,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Apalan",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252004"
           },
           "geometry": {
@@ -11086,8 +11091,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bagasawe",
     "name": "Barangay Bagasawe",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.844482, 10.762142],
     "markerOffset": [123.844482, 10.762142],
     "geoJson": {
@@ -11098,7 +11103,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bagasawe",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252005"
           },
           "geometry": {
@@ -11128,7 +11133,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Bakyawan",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.832054, 10.642416],
     "markerOffset": [123.832054, 10.642416],
     "geoJson": {
@@ -11166,8 +11171,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bangkito",
     "name": "Barangay Bangkito",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.89998, 10.605091],
     "markerOffset": [123.89998, 10.605091],
     "geoJson": {
@@ -11178,7 +11183,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bangkito",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252007"
           },
           "geometry": {
@@ -11202,8 +11207,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-i",
     "name": "Barangay Barangay I (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.828239, 10.730493],
     "markerOffset": [123.828239, 10.730493],
     "geoJson": {
@@ -11214,7 +11219,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay I (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252048"
           },
           "geometry": {
@@ -11237,8 +11242,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-ii",
     "name": "Barangay Barangay II (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.830223, 10.727571],
     "markerOffset": [123.830223, 10.727571],
     "geoJson": {
@@ -11249,7 +11254,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay II (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252049"
           },
           "geometry": {
@@ -11273,8 +11278,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-iii",
     "name": "Barangay Barangay III (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.825857, 10.727774],
     "markerOffset": [123.825857, 10.727774],
     "geoJson": {
@@ -11285,7 +11290,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay III (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252050"
           },
           "geometry": {
@@ -11309,8 +11314,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-iv",
     "name": "Barangay Barangay IV (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.824785, 10.727367],
     "markerOffset": [123.824785, 10.727367],
     "geoJson": {
@@ -11321,7 +11326,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay IV (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252051"
           },
           "geometry": {
@@ -11346,7 +11351,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Barangay V (Pob.)",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.827052, 10.724659],
     "markerOffset": [123.827052, 10.724659],
     "geoJson": {
@@ -11382,8 +11387,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-vi",
     "name": "Barangay Barangay VI (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.821926, 10.727655],
     "markerOffset": [123.821926, 10.727655],
     "geoJson": {
@@ -11394,7 +11399,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay VI (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252053"
           },
           "geometry": {
@@ -11417,8 +11422,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-vii",
     "name": "Barangay Barangay VII (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.823816, 10.724447],
     "markerOffset": [123.823816, 10.724447],
     "geoJson": {
@@ -11429,7 +11434,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay VII (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252054"
           },
           "geometry": {
@@ -11453,8 +11458,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "barangay-viii",
     "name": "Barangay Barangay VIII (Pob.)",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.8148, 10.72136],
     "markerOffset": [123.8148, 10.72136],
     "geoJson": {
@@ -11465,7 +11470,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Barangay VIII (Pob.)",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252055"
           },
           "geometry": {
@@ -11495,8 +11500,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "bulwang",
     "name": "Barangay Bulwang",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.915393, 10.748192],
     "markerOffset": [123.915393, 10.748192],
     "geoJson": {
@@ -11507,7 +11512,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Bulwang",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252008"
           },
           "geometry": {
@@ -11536,8 +11541,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "caridad",
     "name": "Barangay Caridad",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.813482, 10.662848],
     "markerOffset": [123.813482, 10.662848],
     "geoJson": {
@@ -11548,7 +11553,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Caridad",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252015"
           },
           "geometry": {
@@ -11576,7 +11581,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Carmelo",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "3h 10m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.801137, 10.702015],
     "markerOffset": [123.801137, 10.702015],
     "geoJson": {
@@ -11612,8 +11617,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tuburan-cogon",
     "name": "Barangay Cogon",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.826193, 10.713202],
     "markerOffset": [123.826193, 10.713202],
     "geoJson": {
@@ -11624,7 +11629,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Cogon",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252017"
           },
           "geometry": {
@@ -11654,8 +11659,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "colonia",
     "name": "Barangay Colonia",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.794624, 10.648122],
     "markerOffset": [123.794624, 10.648122],
     "geoJson": {
@@ -11666,7 +11671,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Colonia",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252018"
           },
           "geometry": {
@@ -11695,8 +11700,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "daan-lungsod",
     "name": "Barangay Daan Lungsod",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.838711, 10.734746],
     "markerOffset": [123.838711, 10.734746],
     "geoJson": {
@@ -11707,7 +11712,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Daan Lungsod",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252019"
           },
           "geometry": {
@@ -11735,8 +11740,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "fortaliza",
     "name": "Barangay Fortaliza",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.798045, 10.667397],
     "markerOffset": [123.798045, 10.667397],
     "geoJson": {
@@ -11747,7 +11752,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Fortaliza",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252020"
           },
           "geometry": {
@@ -11770,8 +11775,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "ga-ang",
     "name": "Barangay Ga-ang",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.870522, 10.615124],
     "markerOffset": [123.870522, 10.615124],
     "geoJson": {
@@ -11782,7 +11787,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Ga-ang",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252021"
           },
           "geometry": {
@@ -11813,7 +11818,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Gimama-a",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.83703, 10.682146],
     "markerOffset": [123.83703, 10.682146],
     "geoJson": {
@@ -11854,8 +11859,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "jagbuaya",
     "name": "Barangay Jagbuaya",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.815905, 10.685663],
     "markerOffset": [123.815905, 10.685663],
     "geoJson": {
@@ -11866,7 +11871,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Jagbuaya",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252023"
           },
           "geometry": {
@@ -11893,8 +11898,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kabangkalan",
     "name": "Barangay Kabangkalan",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.875895, 10.662721],
     "markerOffset": [123.875895, 10.662721],
     "geoJson": {
@@ -11905,7 +11910,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kabangkalan",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252009"
           },
           "geometry": {
@@ -11931,8 +11936,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kabkaban",
     "name": "Barangay Kabkaban",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.861731, 10.70945],
     "markerOffset": [123.861731, 10.70945],
     "geoJson": {
@@ -11943,7 +11948,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kabkaban",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252024"
           },
           "geometry": {
@@ -11967,8 +11972,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kagba-o",
     "name": "Barangay Kagba-o",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.815602, 10.635727],
     "markerOffset": [123.815602, 10.635727],
     "geoJson": {
@@ -11979,7 +11984,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kagba-o",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252025"
           },
           "geometry": {
@@ -12008,8 +12013,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kalangahan",
     "name": "Barangay Kalangahan",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.895973, 10.694045],
     "markerOffset": [123.895973, 10.694045],
     "geoJson": {
@@ -12020,7 +12025,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kalangahan",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252010"
           },
           "geometry": {
@@ -12046,7 +12051,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Kamansi",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "1h 45m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.893826, 10.650745],
     "markerOffset": [123.893826, 10.650745],
     "geoJson": {
@@ -12083,8 +12088,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kampoot",
     "name": "Barangay Kampoot",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.879633, 10.782306],
     "markerOffset": [123.879633, 10.782306],
     "geoJson": {
@@ -12095,7 +12100,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kampoot",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252026"
           },
           "geometry": {
@@ -12125,8 +12130,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kan-an",
     "name": "Barangay Kan-an",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.883939, 10.602483],
     "markerOffset": [123.883939, 10.602483],
     "geoJson": {
@@ -12137,7 +12142,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kan-an",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252012"
           },
           "geometry": {
@@ -12165,8 +12170,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kanlunsing",
     "name": "Barangay Kanlunsing",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.892117, 10.614745],
     "markerOffset": [123.892117, 10.614745],
     "geoJson": {
@@ -12177,7 +12182,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kanlunsing",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252013"
           },
           "geometry": {
@@ -12200,8 +12205,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kansi",
     "name": "Barangay Kansi",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.840854, 10.622023],
     "markerOffset": [123.840854, 10.622023],
     "geoJson": {
@@ -12212,7 +12217,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kansi",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252014"
           },
           "geometry": {
@@ -12248,8 +12253,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "kaorasan",
     "name": "Barangay Kaorasan",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.90576, 10.620208],
     "markerOffset": [123.90576, 10.620208],
     "geoJson": {
@@ -12260,7 +12265,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Kaorasan",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252027"
           },
           "geometry": {
@@ -12285,7 +12290,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Libo",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "2h 15m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.859572, 10.700627],
     "markerOffset": [123.859572, 10.700627],
     "geoJson": {
@@ -12319,8 +12324,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "lusong",
     "name": "Barangay Lusong",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.896976, 10.760755],
     "markerOffset": [123.896976, 10.760755],
     "geoJson": {
@@ -12331,7 +12336,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Lusong",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252029"
           },
           "geometry": {
@@ -12365,8 +12370,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "macupa",
     "name": "Barangay Macupa",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.862202, 10.757244],
     "markerOffset": [123.862202, 10.757244],
     "geoJson": {
@@ -12377,7 +12382,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Macupa",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252030"
           },
           "geometry": {
@@ -12405,8 +12410,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mag-alwa",
     "name": "Barangay Mag-alwa",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.871524, 10.643421],
     "markerOffset": [123.871524, 10.643421],
     "geoJson": {
@@ -12417,7 +12422,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mag-alwa",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252031"
           },
           "geometry": {
@@ -12443,8 +12448,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mag-antoy",
     "name": "Barangay Mag-antoy",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.855974, 10.633844],
     "markerOffset": [123.855974, 10.633844],
     "geoJson": {
@@ -12455,7 +12460,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mag-antoy",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252032"
           },
           "geometry": {
@@ -12483,8 +12488,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mag-atubang",
     "name": "Barangay Mag-atubang",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "30m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.853821, 10.66202],
     "markerOffset": [123.853821, 10.66202],
     "geoJson": {
@@ -12495,7 +12500,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mag-atubang",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252033"
           },
           "geometry": {
@@ -12523,7 +12528,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Maghan-ay",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.818619, 10.621402],
     "markerOffset": [123.818619, 10.621402],
     "geoJson": {
@@ -12562,8 +12567,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "mangga",
     "name": "Barangay Mangga",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.81167, 10.706964],
     "markerOffset": [123.81167, 10.706964],
     "geoJson": {
@@ -12574,7 +12579,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Mangga",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252035"
           },
           "geometry": {
@@ -12605,8 +12610,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "marmol",
     "name": "Barangay Marmol",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.863622, 10.687649],
     "markerOffset": [123.863622, 10.687649],
     "geoJson": {
@@ -12617,7 +12622,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Marmol",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252036"
           },
           "geometry": {
@@ -12645,8 +12650,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "molobolo",
     "name": "Barangay Molobolo",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.79821, 10.692383],
     "markerOffset": [123.79821, 10.692383],
     "geoJson": {
@@ -12657,7 +12662,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Molobolo",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252037"
           },
           "geometry": {
@@ -12682,8 +12687,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "montealegre",
     "name": "Barangay Montealegre",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.903286, 10.71425],
     "markerOffset": [123.903286, 10.71425],
     "geoJson": {
@@ -12694,7 +12699,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Montealegre",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252038"
           },
           "geometry": {
@@ -12721,8 +12726,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "putat",
     "name": "Barangay Putat",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "4h 00m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.858712, 10.779249],
     "markerOffset": [123.858712, 10.779249],
     "geoJson": {
@@ -12733,7 +12738,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Putat",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252040"
           },
           "geometry": {
@@ -12765,7 +12770,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay San Juan",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "30m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.843483, 10.720145],
     "markerOffset": [123.843483, 10.720145],
     "geoJson": {
@@ -12805,8 +12810,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sandayong",
     "name": "Barangay Sandayong",
     "city": "Tuburan, Cebu",
-    "status": "Brownout",
-    "timeRemaining": "Restored",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.878346, 10.714485],
     "markerOffset": [123.878346, 10.714485],
     "geoJson": {
@@ -12817,7 +12822,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sandayong",
             "city": "Tuburan, Cebu",
-            "status": "Brownout",
+            "status": "Power Restored",
             "psgc": "PH072252042"
           },
           "geometry": {
@@ -12846,8 +12851,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tuburan-santo-nino",
     "name": "Barangay Santo Niño",
     "city": "Tuburan, Cebu",
-    "status": "Line Maintenance",
-    "timeRemaining": "2h 15m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.787784, 10.674987],
     "markerOffset": [123.787784, 10.674987],
     "geoJson": {
@@ -12858,7 +12863,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Santo Niño",
             "city": "Tuburan, Cebu",
-            "status": "Line Maintenance",
+            "status": "Power Restored",
             "psgc": "PH072252043"
           },
           "geometry": {
@@ -12888,8 +12893,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "siotes",
     "name": "Barangay Siotes",
     "city": "Tuburan, Cebu",
-    "status": "Transformer Repair",
-    "timeRemaining": "1h 45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.877365, 10.739129],
     "markerOffset": [123.877365, 10.739129],
     "geoJson": {
@@ -12900,7 +12905,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Siotes",
             "city": "Tuburan, Cebu",
-            "status": "Transformer Repair",
+            "status": "Power Restored",
             "psgc": "PH072252044"
           },
           "geometry": {
@@ -12926,8 +12931,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "sumon",
     "name": "Barangay Sumon",
     "city": "Tuburan, Cebu",
-    "status": "Scheduled Outage",
-    "timeRemaining": "45m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.831593, 10.660231],
     "markerOffset": [123.831593, 10.660231],
     "geoJson": {
@@ -12938,7 +12943,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Sumon",
             "city": "Tuburan, Cebu",
-            "status": "Scheduled Outage",
+            "status": "Power Restored",
             "psgc": "PH072252045"
           },
           "geometry": {
@@ -12964,8 +12969,8 @@ export const mockOutages: OutageLocation[] = [
     "id": "tuburan-tominjao",
     "name": "Barangay Tominjao",
     "city": "Tuburan, Cebu",
-    "status": "Emergency Interruption",
-    "timeRemaining": "3h 10m left",
+    "status": "Power Restored",
+    "timeRemaining": "Stable",
     "coordinates": [123.857704, 10.732608],
     "markerOffset": [123.857704, 10.732608],
     "geoJson": {
@@ -12976,7 +12981,7 @@ export const mockOutages: OutageLocation[] = [
           "properties": {
             "name": "Barangay Tominjao",
             "city": "Tuburan, Cebu",
-            "status": "Emergency Interruption",
+            "status": "Power Restored",
             "psgc": "PH072252046"
           },
           "geometry": {
@@ -13007,7 +13012,7 @@ export const mockOutages: OutageLocation[] = [
     "name": "Barangay Tomugpa",
     "city": "Tuburan, Cebu",
     "status": "Power Restored",
-    "timeRemaining": "4h 00m left",
+    "timeRemaining": "Stable",
     "coordinates": [123.890418, 10.628469],
     "markerOffset": [123.890418, 10.628469],
     "geoJson": {
